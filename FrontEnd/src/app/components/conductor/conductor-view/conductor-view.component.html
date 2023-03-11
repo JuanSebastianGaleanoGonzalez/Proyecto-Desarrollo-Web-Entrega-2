@@ -1,0 +1,87 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Noto+Sans&display=swap" rel="stylesheet">
+    <title>Conductor</title>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-dark bg-primary navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Ponti-Transmi</a>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Salir</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div class="coverC d-flex justify-content-center align-items-center flex-column">
+            <h1>
+                Ponti-Transmi
+            </h1>
+            <p>
+                La mejor ruta a tu alcance<br>
+            </p>
+            <p>
+                <br>Gestiona y Coordina los Condutores y Buses
+            </p>
+        </div>
+    </section>
+        <section>
+            <div class="wrapper">
+                <div class="container mainI">
+                    <div class="row">
+                        <div class="col-md-6 side-image-crud">
+                            <!-------Image-------->
+                            <img src="images/white.png" alt="">
+                        </div>
+                        <div class="col-md-2 right">
+                             <div class="input-box">
+                                <h2>Conductores</h2>
+                                <a th:href="@{/conductor/search}" class="btn btn-outline-info">Buscar</a>
+
+                                <table class="person-list table table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">Cedula</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Telefono</th>
+                                            <th scope="col">Direccion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="p : ${conductores}" th:if="${p.cedula}">
+                                            <td th:text="${p.cedula}"></td>
+                                            <td th:text="${p.nombre}"></td>
+                                            <td th:text="${p.telefono}"></td>
+                                            <td th:text="${p.direccion}"></td>
+                                            <td>
+                                                <a class="btn btn-outline-info" th:href="@{/conductor/view/{id}(id=${p.id})}">Ver</a>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-outline-info" th:href="@{/conductor/edit-form/{id}(id=${p.id})}">Editar</a>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-outline-info" th:href="@{/conductor/delete/{id}(id=${p.id})}">Eliminar</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+</body>
+</html>
