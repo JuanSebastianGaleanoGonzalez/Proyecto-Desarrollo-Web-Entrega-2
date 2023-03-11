@@ -6,6 +6,7 @@ import { ConductorViewComponent } from './components/conductor/conductor-view/co
 import { TransmilenioViewComponent } from './components/transmilenio/transmilenio-view/transmilenio-view.component';
 import { RutaViewComponent } from './components/ruta/ruta-view/ruta-view.component';
 import { EstacionViewComponent } from './components/estacion/estacion-view/estacion-view.component';
+import { ConductorListComponent } from './components/conductor/conductor-list/conductor-list.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { EstacionViewComponent } from './components/estacion/estacion-view/estac
     ConductorViewComponent,
     TransmilenioViewComponent,
     RutaViewComponent,
-    EstacionViewComponent
+    EstacionViewComponent,
+    ConductorListComponent
   ],
   imports: [
     BrowserModule

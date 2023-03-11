@@ -1,0 +1,50 @@
+<html>
+  <body>
+    <div class="wrapper">
+      <div class="container mainI">
+          <div class="row">
+              <div class="col-md-6 side-image-crud">
+                  <!-------Image-------->
+                  <img src="images/white.png" alt="">
+              </div>
+              <div class="col-md-2 right">
+                   <div class="input-box">
+                      <h2>Conductores</h2>
+                      <a th:href="@{/conductor/search}" class="btn btn-outline-info">Buscar</a>
+
+                      <table class="person-list table table-striped">
+                          <thead class="thead-dark">
+                              <tr>
+                                  <th scope="col">Cedula</th>
+                                  <th scope="col">Nombre</th>
+                                  <th scope="col">Telefono</th>
+                                  <th scope="col">Direccion</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr th:each="p : ${conductores}" th:if="${p.cedula}">
+                                  <td th:text="${p.cedula}"></td>
+                                  <td th:text="${p.nombre}"></td>
+                                  <td th:text="${p.telefono}"></td>
+                                  <td th:text="${p.direccion}"></td>
+                                  <td>
+                                      <a class="btn btn-outline-info" th:href="@{/conductor/view/{id}(id=${p.id})}">Ver</a>
+                                  </td>
+                                  <td>
+                                      <a class="btn btn-outline-info" th:href="@{/conductor/edit-form/{id}(id=${p.id})}">Editar</a>
+                                  </td>
+                                  <td>
+                                      <a class="btn btn-outline-info" th:href="@{/conductor/delete/{id}(id=${p.id})}">Eliminar</a>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+
+                   </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </body>
+</html>
+
