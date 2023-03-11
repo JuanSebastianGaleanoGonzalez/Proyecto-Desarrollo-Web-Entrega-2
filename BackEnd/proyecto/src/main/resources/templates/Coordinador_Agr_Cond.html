@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Noto+Sans&display=swap" rel="stylesheet">
+    <title>Coordinador</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class="index-background">
+    <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
+                    <a class="navbar-brand" href="#">Coordinador</a>
+                    <ul class="nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Coordinador_Cons_Cond.html">Consultar Conductor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Coordinador_Agr_Cond.html">Agregar Conductor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Coordinador_Edit_Cond.html">Modificar Conductor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Coordinador_Elim_Cond.html">Eliminar Conductor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Coordinador_AsigBus_Cond.html">Asignar Bus A Un Conductor</a>
+                        </li>
+                    </ul>
+                </nav>
+    </header>
+    <section>
+        <div class="coverC d-flex justify-content-center align-items-center flex-column">
+            <h2>
+                Agregar un Conductor<br>
+            </h2>
+        </div>
+    </section>
+    <section>
+        <div class="wrapper">
+            <div class="container mainI">
+                <div class="row">
+                    <div class="col-md-6 side-image-crud">
+                        <!-------Image-------->
+                        <img src="images/white.png" alt="">
+                    </div>
+                    <div class="col-md-6 right">
+                         <div class="input-box" th:action="@{/crearConductor}" 
+                              th:object="${conductor}" method="POST">
+                            <h2>Crear Conductor</h2>
+                            <br>
+                            <div class="input-field">
+                                <input type="text" class="input" id="agregar_name" required autocomplete="off"
+                                        tf:field="{conductor.name}">
+                                <label for="agregar_name">Nombre</label>
+                            </div>
+                            <div class="input-field">
+                                    <input type="text" class="input" id="agregar_cedula" required
+                                            tf:field="{conductor.cedula}">
+                                    <label for="agregar_cedula">Cédula</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" class="input" id="agregar_telefono" required
+                                        tf:field="{conductor.relefono}">
+                                <label for="agregar_telefono">Télefono</label>
+                            </div>
+                            <div class="input-field">
+                                    <input type="text" class="input" id="agregar_direccion" required
+                                            tf:field="{conductor.direccion}">
+                                    <label for="agregar_direccion">Dirección</label>
+                            </div>
+                            <div class="input-field">
+                                <button type="submit" class="btn btn-outline-info" th:value="'Agregar'">Agregar</button>     
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
