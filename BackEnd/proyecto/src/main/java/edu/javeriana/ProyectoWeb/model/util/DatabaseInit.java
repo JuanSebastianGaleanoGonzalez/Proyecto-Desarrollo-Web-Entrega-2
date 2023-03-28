@@ -1,14 +1,23 @@
 package edu.javeriana.ProyectoWeb.model.util;
 
-import edu.javeriana.ProyectoWeb.model.entity.*;
-import edu.javeriana.ProyectoWeb.model.repository.*;
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
+import edu.javeriana.ProyectoWeb.model.entity.Conductor;
+import edu.javeriana.ProyectoWeb.model.entity.Estacion;
+import edu.javeriana.ProyectoWeb.model.entity.Horario;
+import edu.javeriana.ProyectoWeb.model.entity.Ruta;
+import edu.javeriana.ProyectoWeb.model.entity.Transmilenio;
+import edu.javeriana.ProyectoWeb.model.repository.ConductorRepository;
+import edu.javeriana.ProyectoWeb.model.repository.EstacionRepository;
+import edu.javeriana.ProyectoWeb.model.repository.HorarioRepository;
+import edu.javeriana.ProyectoWeb.model.repository.RutaRepository;
+import edu.javeriana.ProyectoWeb.model.repository.TransmilenioRepository;
+
 
 @Component
 public class DatabaseInit implements ApplicationRunner {
