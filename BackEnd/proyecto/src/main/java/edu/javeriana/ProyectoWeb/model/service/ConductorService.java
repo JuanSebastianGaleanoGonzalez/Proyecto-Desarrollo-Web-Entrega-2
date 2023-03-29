@@ -4,40 +4,31 @@ import edu.javeriana.ProyectoWeb.model.entity.Conductor;
 import edu.javeriana.ProyectoWeb.model.repository.ConductorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class ConductorService {
     @Autowired
     private ConductorRepository conductorRepository;
 
-    public List<Conductor> listarConductores(){
+    public List<Conductor> getConductores(){
         return (List<Conductor>) conductorRepository.findAll();
     }
 
-    public Conductor buscarConductor(long id){
-        Conductor aux = conductorRepository.findById(id).orElseThrow();
-        return aux;
-    }
-
-    public List<Conductor> buscarConductorCedula(int cedula){
-        List<Conductor> auxiliares = new ArrayList<>();
-        for(Conductor conductor: conductorRepository.findAll()){
-            if(conductor.getCedula() == cedula){
-                auxiliares.add(conductor);
-            }
+    public Conductor getConductor(long id){
+        try{
+            return conductorRepository.findById(id).orElseThrow();
+        }catch(NoSuchElementException exception){
+            return null;
         }
-        return auxiliares;
     }
 
-    public void guardarConductor(Conductor conductor){
+    public void addConductor(Conductor conductor){
         conductorRepository.save(conductor);
     }
 
-    public void eliminarConductor(Conductor conductor){
-        conductorRepository.delete(conductor);
+    public void removeConductor(long id){
+        conductorRepository.deleteById(id);
     }
-
 }
