@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -17,7 +18,7 @@ import lombok.ToString;
 @Table(name = "transmilenio")
 @Getter @Setter @ToString @EqualsAndHashCode
 public class Transmilenio {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "placa")
     private String placa;
@@ -25,10 +26,10 @@ public class Transmilenio {
     private String modelo;
 
     @ManyToMany
-    private List<Ruta> rutasAsignadas = new ArrayList<>();
+    private List<Ruta> rutas = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "listadoBuses")
-    private List<Conductor> conductoresAsignados = new ArrayList<>();
+    @ManyToMany(mappedBy = "transmilenios")
+    private List<Conductor> conductores = new ArrayList<>();
     public Transmilenio(){};
 
     public Transmilenio(String placa1, String modelo1){

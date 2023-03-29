@@ -1,10 +1,13 @@
 package edu.javeriana.ProyectoWeb.model.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -15,7 +18,7 @@ import lombok.ToString;
 @Table
 @Getter @Setter @ToString @EqualsAndHashCode
 public class Horario {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "horaInicio")
     private int horaInicio;
@@ -24,8 +27,9 @@ public class Horario {
     @Column (name = "diaSemana")
     private String diaSemana;
 
-    @ManyToOne
-    private Ruta ruta;
+    @ManyToMany(mappedBy = "horarios")
+    private List<Ruta> rutas;
+
     public Horario(){};
 
     public Horario(int horaInit, int horaEnd, String dia){

@@ -3,6 +3,7 @@ package edu.javeriana.ProyectoWeb.model.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -19,7 +20,7 @@ import java.util.List;
 @Getter @Setter @ToString @EqualsAndHashCode
 public class Conductor {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "nombre")
     private String nombre;
@@ -31,7 +32,7 @@ public class Conductor {
     private String direccion;
 
     @ManyToMany
-    private List<Transmilenio> listadoBuses = new ArrayList<>();
+    private List<Transmilenio> transmilenios = new ArrayList<>();
 
     public Conductor(){};
 

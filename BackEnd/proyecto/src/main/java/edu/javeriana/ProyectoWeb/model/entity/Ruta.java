@@ -5,9 +5,9 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -18,19 +18,19 @@ import lombok.ToString;
 @Table(name = "ruta")
 @Getter @Setter @ToString @EqualsAndHashCode
 public class Ruta {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "codigo")
     private String codigo;
 
-    @OneToMany(mappedBy = "ruta")
-    List<Horario> listaHorarios = new ArrayList<>();
+    @ManyToMany
+    List<Horario> horarios = new ArrayList<>();
 
     @ManyToMany
     private List<Estacion> estaciones = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "rutasAsignadas")
+    @ManyToMany(mappedBy = "rutas")
     List<Transmilenio> listaTransmilenios = new ArrayList<>();
     public Ruta(){};
 
