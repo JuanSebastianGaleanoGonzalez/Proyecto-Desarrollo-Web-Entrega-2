@@ -7,6 +7,7 @@ import { TransmilenioViewComponent } from './components/transmilenio/transmileni
 import { RutaViewComponent } from './components/ruta/ruta-view/ruta-view.component';
 import { EstacionViewComponent } from './components/estacion/estacion-view/estacion-view.component';
 import { ConductorListComponent } from './components/conductor/conductor-list/conductor-list.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ConductorListComponent } from './components/conductor/conductor-list/co
     ConductorListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

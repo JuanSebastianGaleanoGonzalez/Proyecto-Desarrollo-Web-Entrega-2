@@ -15,7 +15,7 @@ import edu.javeriana.ProyectoWeb.model.service.HorarioService;
 
 @RestController
 @RequestMapping(value = "/horario")
-public class HorarioController {
+public class    HorarioController {
 
     @Autowired
     HorarioService horarioService;
