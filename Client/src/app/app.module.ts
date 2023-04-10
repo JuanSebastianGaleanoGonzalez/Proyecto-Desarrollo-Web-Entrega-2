@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
+import { NotfoundComponent } from './components/not-found/notfound.component';
 import { ConductorViewComponent } from './components/conductor/conductor-view/conductor-view.component';
 import { TransmilenioViewComponent } from './components/transmilenio/transmilenio-view/transmilenio-view.component';
 import { RutaViewComponent } from './components/ruta/ruta-view/ruta-view.component';
@@ -10,6 +12,7 @@ import { ConductorListComponent } from './components/conductor/conductor-list/co
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
     TransmilenioViewComponent,
     RutaViewComponent,
     EstacionViewComponent,
-    ConductorListComponent
+    ConductorListComponent,
+    HomeComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
