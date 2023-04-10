@@ -8,11 +8,10 @@ import { TransmilenioListComponent } from './components/transmilenio/transmileni
 const routes:Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', pathMatch: 'full', redirectTo: '/home' },
-  { path: '**', component: NotfoundComponent},
   { path: 'conductor/list', component: ConductorListComponent },
   { path: 'ruta/list', component: RutaListComponent },
   { path: 'transmilenio/list', component: TransmilenioListComponent },
-
+  { path: '**', component: NotfoundComponent}
 ]; 
 
 @NgModule({
