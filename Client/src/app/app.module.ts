@@ -11,6 +11,8 @@ import { EstacionViewComponent } from './components/estacion/estacion-view/estac
 import { ConductorListComponent } from './components/conductor/conductor-list/conductor-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { RutaListComponent } from './components/ruta/ruta-list/ruta-list.component';
+import { TransmilenioListComponent } from './components/transmilenio/transmilenio-list/transmilenio-list.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
     EstacionViewComponent,
     ConductorListComponent,
     HomeComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    RutaListComponent,
+    TransmilenioListComponent
   ],
   imports: [
     BrowserModule,

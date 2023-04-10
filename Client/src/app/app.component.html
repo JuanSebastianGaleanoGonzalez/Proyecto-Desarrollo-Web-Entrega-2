@@ -6,14 +6,15 @@
                 <a class="nav-link" [routerLink]="['/conductor/list']">Conductores</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.html">Rutas</a>
+                <a class="nav-link" [routerLink]="['/ruta/list']">Rutas</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.html">Buses</a>
+                <a class="nav-link"  [routerLink]="['/transmilenio/list']">Buses</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="index.html">Salir</a>
             </li>
         </ul>
     </nav>
+    <router-outlet></router-outlet>
 </div>
