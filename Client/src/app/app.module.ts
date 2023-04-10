@@ -13,6 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RutaListComponent } from './components/ruta/ruta-list/ruta-list.component';
 import { TransmilenioListComponent } from './components/transmilenio/transmilenio-list/transmilenio-list.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ConductorUpdateComponent } from './components/conductor/conductor-update/conductor-update.component';
 
 
 @NgModule({
@@ -26,12 +28,14 @@ import { TransmilenioListComponent } from './components/transmilenio/transmileni
     HomeComponent,
     NotfoundComponent,
     RutaListComponent,
-    TransmilenioListComponent
+    TransmilenioListComponent,
+    ConductorUpdateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

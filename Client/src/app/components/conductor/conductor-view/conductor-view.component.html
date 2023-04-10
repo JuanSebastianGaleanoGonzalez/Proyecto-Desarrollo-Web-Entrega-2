@@ -1,0 +1,39 @@
+<html>
+  <body>
+    <div class="wrapper-md-3">
+      <div class="container mainI">
+          <div class="row">
+              <div class="col-md-3 side-image-crud">
+                  <!-------Image-------->
+                  
+              </div>
+              <div class="col-md-7 right">
+                   <div class="input-box">
+                      <h2>Conductor</h2>
+                      <table class="conductor-list table table-striped">
+                          <thead class="thead-dark">
+                              <tr>
+                                  <th scope="col">Cedula</th>
+                                  <th scope="col">Nombre</th>
+                                  <th scope="col">Telefono</th>
+                                  <th scope="col">Direccion</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                                <tr>
+                                  <td>{{conductor?.cedula}}</td>
+                                  <td>{{conductor?.nombre}}</td>
+                                  <td >{{conductor?.telefono}}</td>
+                                  <td >{{conductor?.direccion}}</td>
+                              </tr>
+
+                          </tbody>
+                      </table>
+                      <a class="btn btn-outline-info" [routerLink]="['/conductor/list']">Atrás</a>
+                   </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </body>
+</html>

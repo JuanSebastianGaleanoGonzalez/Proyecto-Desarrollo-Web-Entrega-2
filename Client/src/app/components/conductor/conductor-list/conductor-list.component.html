@@ -1,18 +1,16 @@
 <html>
   <body>
-    <div class="wrapper">
+    <div class="wrapper-md-3">
       <div class="container mainI">
           <div class="row">
-              <div class="col-md-6 side-image-crud">
+              <div class="col-md-3 side-image-crud">
                   <!-------Image-------->
-                  <img src="images/white.png" alt="">
+                  
               </div>
-              <div class="col-md-2 right">
+              <div class="col-md-5 right">
                    <div class="input-box">
                       <h2>Conductores</h2>
-                      <a th:href="@{/conductor/search}" class="btn btn-outline-info">Buscar</a>
-
-                      <table class="person-list table table-striped">
+                      <table class="conductor-list table table-striped">
                           <thead class="thead-dark">
                               <tr>
                                   <th scope="col">Cedula</th>
@@ -22,23 +20,26 @@
                               </tr>
                           </thead>
                           <tbody>
-                              <tr th:each="p : ${conductores}" th:if="${p.cedula}">
-                                  <td th:text="${p.cedula}"></td>
-                                  <td th:text="${p.nombre}"></td>
-                                  <td th:text="${p.telefono}"></td>
-                                  <td th:text="${p.direccion}"></td>
-                                  <td>
-                                      <a class="btn btn-outline-info" th:href="@{/conductor/view/{id}(id=${p.id})}">Ver</a>
-                                  </td>
-                                  <td>
-                                      <a class="btn btn-outline-info" th:href="@{/conductor/edit-form/{id}(id=${p.id})}">Editar</a>
-                                  </td>
-                                  <td>
-                                      <a class="btn btn-outline-info" th:href="@{/conductor/delete/{id}(id=${p.id})}">Eliminar</a>
-                                  </td>
+                                <tr *ngFor="let conductor of conductores">
+                                    <td>{{conductor.cedula}}</td>
+                                    <td>{{conductor.nombre}}</td>
+                                    <td>{{conductor.telefono}}</td>
+                                    <td>{{conductor.direccion}}</td>
+                                    <td>
+                                        <a class="btn btn-outline-info" [routerLink]="['/conductor/view', conductor.cedula]">Ver</a>
+                                    </td>
+                                    <td>
+                                    <a class="btn btn-outline-info" [routerLink]="['/conductor/view', conductor.cedula]">Editar</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-outline-info" [routerLink]="['/conductor/view', conductor.cedula]">Eliminar</a>
+                                    </td>
                               </tr>
                           </tbody>
                       </table>
+                      
+                        <a class="btn btn-outline-info ">Crear</a>
+                    
                    </div>
               </div>
           </div>
