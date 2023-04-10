@@ -8,6 +8,7 @@ import { RutaViewComponent } from './components/ruta/ruta-view/ruta-view.compone
 import { EstacionViewComponent } from './components/estacion/estacion-view/estacion-view.component';
 import { ConductorListComponent } from './components/conductor/conductor-list/conductor-list.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
