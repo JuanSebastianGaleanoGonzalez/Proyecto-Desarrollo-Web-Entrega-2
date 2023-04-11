@@ -7,16 +7,13 @@ import { Conductor } from 'src/app/model/conductor/conductor';
 })
 export class ConductorService {
 
-  constructor(private http:HttpClient) { }
+  private API_SERVER = "http://localhost:8080/conductor"
+  constructor(private httpClient:HttpClient) { }
 
-  private conductorDB: { [key: number]: Conductor } = { //mapa quemado de base de datos
-    1: new Conductor('Anderson', 123,123,'universidad'),
-    2: new Conductor('Sebastian Galeano', 123,123,'calle'),
-  };
-  findAll(): Observable<Conductor[]> {
-    return of(Object.values(this.conductorDB)); //of convierte a Observable
+  findAll(): Observable<Conductor> {
+    return this.httpClient.get(this.API_SERVER + "/read");
   }
-  findById(cedula: number): Observable<Conductor> {
-    return of(this.conductorDB[1]); // to avoid error, use type  : { [key: number]: Person } 
+  findById(id: number): Observable<Conductor> {
+    return this.httpClient.get(`http://localhost:8080/conductor/read/${id}`); 
   }
 }

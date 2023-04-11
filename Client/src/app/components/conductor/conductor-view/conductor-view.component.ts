@@ -12,18 +12,17 @@ import { Observable } from 'rxjs';
 export class ConductorViewComponent implements OnInit {
 
   conductor: Conductor | undefined;
-  otherConductor$: Observable<Conductor> | undefined
 
   constructor(
-    private coductorService: ConductorService,
+    private conductorService: ConductorService,
     private route: ActivatedRoute, // captura el parametro
     private router: Router) { } // redirecciona a otra ruta
 
   ngOnInit(): void {
      //se recomienda switchMap para quedarse con el tultimo dato y manejar varias suscripciones
-     this.route.paramMap.pipe(switchMap(params =>
+    this.route.paramMap.pipe(switchMap(params =>
       //cuando se tenga certeza que no es null agregar "!", "+" indica que es tipo numerico 
-      this.coductorService.findById(+params.get('id')!)
+    this.conductorService.findById(+params.get('id')!)
       //otra forma cuando llegan un valor null automaticamente pone el numero 1 
       //this.personService.findById(+(params.get('id') || 1)) 
 

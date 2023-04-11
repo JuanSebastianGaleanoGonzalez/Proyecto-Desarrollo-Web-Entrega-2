@@ -1,49 +1,52 @@
 <html>
-  <body>
+
+<body>
     <div class="wrapper-md-3">
-      <div class="container mainI">
-          <div class="row">
-              <div class="col-md-3 side-image">
-                  <!-------Image-------->
-                  
-              </div>
-              <div class="col-md-5 right">
-                   <div class="input-box">
-                      <h2>Conductores</h2>
-                      <table class="conductor-list table table-striped">
-                          <thead class="thead-dark">
-                              <tr>
-                                  <th scope="col">Cédula</th>
-                                  <th scope="col">Nombre</th>
-                                  <th scope="col">Teléfono</th>
-                                  <th scope="col">Dirección</th>
-                              </tr>
-                          </thead>
-                          <tbody>
+        <div class="container mainI">
+            <div class="row">
+                <div class="col-md-3 side-image">
+                    <!-------Image-------->
+
+                </div>
+                <div class="col-md-5 right">
+                    <div class="input-box">
+                        <h2>Conductores</h2>
+                        <table class="conductor-list table table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Cédula</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Teléfono</th>
+                                    <th scope="col">Dirección</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                                 <tr *ngFor="let conductor of conductores">
                                     <td>{{conductor.cedula}}</td>
                                     <td>{{conductor.nombre}}</td>
                                     <td>{{conductor.telefono}}</td>
                                     <td>{{conductor.direccion}}</td>
                                     <td>
-                                        <a class="btn btn-outline-info" [routerLink]="['/conductor/view', conductor.cedula]">Ver</a>
+                                        <a class="btn btn-outline-info"
+                                            [routerLink]="['/conductor/view', conductor.id]">Ver</a>
                                     </td>
                                     <td>
-                                    <a class="btn btn-outline-info" [routerLink]="['/conductor/update', conductor.cedula]">Editar</a>
+                                        <a class="btn btn-outline-info"
+                                            [routerLink]="['/conductor/update', conductor.id]">Editar</a>
                                     </td>
                                     <td>
-                                        <a class="btn btn-outline-info" [routerLink]="['/conductor/view', conductor.cedula]">Eliminar</a>
+                                        <a class="btn btn-outline-info"
+                                            [routerLink]="['/conductor/view', conductor.id]">Eliminar</a>
                                     </td>
-                              </tr>
-                          </tbody>
-                      </table>
-                      
+                                </tr>
+                            </tbody>
+                        </table>
                         <a class="btn btn-outline-info" [routerLink]="['create']">Crear</a>
-                    
-                   </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  </body>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>

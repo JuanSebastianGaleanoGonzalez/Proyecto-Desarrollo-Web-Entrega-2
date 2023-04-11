@@ -149,7 +149,7 @@ public class DatabaseInit implements ApplicationRunner {
         horarioRepository.save(new Horario(6,12, DiaSemana.Domingo.toString()));
         horarioRepository.save(new Horario(12,18, DiaSemana.Domingo.toString()));
         horarioRepository.save(new Horario(18,24, DiaSemana.Domingo.toString()));
-        for(Conductor conductor: conductorRepository.findAll()){
+        /*for(Conductor conductor: conductorRepository.findAll()){
             long numero = (long)(Math.random()*(transmilenioRepository.count() + 1));
             int cantidadBuses = (int)(Math.random()*(transmilenioRepository.count() + 1));
             for(int iterador = 0; iterador < cantidadBuses; iterador++){
@@ -163,7 +163,7 @@ public class DatabaseInit implements ApplicationRunner {
                 numero = (long)(Math.random()*(transmilenioRepository.count() + 1));
             }
         }
-
+*/
         for(Ruta ruta: rutaRepository.findAll()){
             long numero = (long)(Math.random()*(horarioRepository.count() + 1));
             int cantidadHorarios = (int)(Math.random()*(horarioRepository.count() + 1));

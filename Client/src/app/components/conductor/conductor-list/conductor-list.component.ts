@@ -9,7 +9,7 @@ import { ConductorService } from 'src/app/services/conductor/conductor.service';
 })
 export class ConductorListComponent implements OnInit {
 
-  conductores: Conductor[] = []; 
+  conductores: any; 
   constructor(
     private conductorService: ConductorService
   ) { }
