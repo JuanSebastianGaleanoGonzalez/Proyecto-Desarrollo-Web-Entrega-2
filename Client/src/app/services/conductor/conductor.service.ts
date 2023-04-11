@@ -17,6 +17,6 @@ export class ConductorService {
     return of(Object.values(this.conductorDB)); //of convierte a Observable
   }
   findById(cedula: number): Observable<Conductor> {
-    return of(this.conductorDB[cedula]); // to avoid error, use type  : { [key: number]: Person } 
+    return of(this.conductorDB[1]); // to avoid error, use type  : { [key: number]: Person } 
   }
 }

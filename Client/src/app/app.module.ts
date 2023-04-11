@@ -15,6 +15,11 @@ import { RutaListComponent } from './components/ruta/ruta-list/ruta-list.compone
 import { TransmilenioListComponent } from './components/transmilenio/transmilenio-list/transmilenio-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConductorUpdateComponent } from './components/conductor/conductor-update/conductor-update.component';
+import { ConductorCreateComponent } from './components/conductor/conductor-create/conductor-create.component';
+import { TransmilenioCreateComponent } from './components/transmilenio/transmilenio-create/transmilenio-create.component';
+import { TransmilenioUpdateComponent } from './components/transmilenio/transmilenio-update/transmilenio-update.component';
+import { RutaUpdateComponent } from './components/ruta/ruta-update/ruta-update.component';
+import { RutaCreateComponent } from './components/ruta/ruta-create/ruta-create.component';
 
 
 @NgModule({
@@ -29,7 +34,12 @@ import { ConductorUpdateComponent } from './components/conductor/conductor-updat
     NotfoundComponent,
     RutaListComponent,
     TransmilenioListComponent,
-    ConductorUpdateComponent
+    ConductorUpdateComponent,
+    ConductorCreateComponent,
+    TransmilenioCreateComponent,
+    TransmilenioUpdateComponent,
+    RutaUpdateComponent,
+    RutaCreateComponent
   ],
   imports: [
     BrowserModule,

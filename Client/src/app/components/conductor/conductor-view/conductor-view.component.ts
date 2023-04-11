@@ -28,7 +28,5 @@ export class ConductorViewComponent implements OnInit {
       //this.personService.findById(+(params.get('id') || 1)) 
 
     )).subscribe(conductor => this.conductor = conductor);
-
   }
-
 }

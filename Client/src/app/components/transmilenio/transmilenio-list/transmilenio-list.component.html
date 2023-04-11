@@ -1,1 +1,45 @@
-<p>transmilenio-list works!</p>
+<html>
+  <body>
+    <div class="wrapper-md-3">
+      <div class="container mainI">
+          <div class="row">
+              <div class="col-md-3 side-image-crud">
+                  <!-------Image-------->
+                  
+              </div>
+              <div class="col-md-5 right">
+                   <div class="input-box">
+                      <h2>Buses</h2>
+                      <table class="conductor-list table table-striped">
+                          <thead class="thead-dark">
+                              <tr>
+                                  <th scope="col">Placa</th>
+                                  <th scope="col">Modelo</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                                <tr *ngFor="let transmilenio of transmilenios">
+                                    <td>{{transmilenio.placa}}</td>
+                                    <td>{{transmilenio.modelo}}</td>
+                                    <td>
+                                        <a class="btn btn-outline-info" [routerLink]="['/transmilenio/view', transmilenio.placa]">Ver</a>
+                                    </td>
+                                    <td>
+                                    <a class="btn btn-outline-info" [routerLink]="['/transmilenio/update', transmilenio.placa]">Editar</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-outline-info" [routerLink]="['/conductor/view', transmilenio.placa]">Eliminar</a>
+                                    </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                      
+                        <a class="btn btn-outline-info" [routerLink]="['create']">Crear</a>
+                    
+                   </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </body>
+</html>

@@ -1,1 +1,46 @@
-<p>transmilenio-view works!</p>
+<html>
+  <body>
+    <div class="wrapper-md-3">
+      <div class="container mainI">
+          <div class="row">
+              <div class="col-md-3 side-image-crud">
+                  <!-------Image-------->
+                  
+              </div>
+              <div class="col-md-7 right">
+                   <div class="input-box">
+                      <h2>Bus</h2>
+                      <table class="conductor-list table table-striped">
+                          <thead class="thead-dark">
+                              <tr>
+                                  <th scope="col">Placa</th>
+                                  <th scope="col">Modelo</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                                <tr>
+                                  <td>{{transmilenio?.placa}}</td>
+                                  <td>{{transmilenio?.modelo}}</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                      <table class="conductor-list table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Rutas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                              <tr>
+                                <td>{{transmilenio?.placa}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                      <a class="btn btn-outline-info" [routerLink]="['/transmilenio/list']">Atrás</a>
+                   </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </body>
+</html>
