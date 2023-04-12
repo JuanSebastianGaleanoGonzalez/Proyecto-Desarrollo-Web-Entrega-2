@@ -1,0 +1,7 @@
+table{
+    table-layout: auto;
+}
+
+table td{
+    white-space: nowrap;
+}

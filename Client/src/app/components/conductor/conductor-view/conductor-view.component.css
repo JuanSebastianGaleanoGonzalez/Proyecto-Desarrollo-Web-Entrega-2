@@ -1,0 +1,24 @@
+.grupoAtributo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.grupoAtributo p{
+    flex: 1;
+}
+
+.etiqueta{
+    font-weight: lighter;
+}
+
+
+.botonesContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.botonesContainer a{
+    margin: 5px;
+}

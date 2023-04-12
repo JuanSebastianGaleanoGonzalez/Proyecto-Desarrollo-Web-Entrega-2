@@ -10,20 +10,14 @@
               <div class="col-md-7 right">
                    <div class="input-box">
                       <h2>Bus</h2>
-                      <table class="conductor-list table table-striped">
-                          <thead class="thead-dark">
-                              <tr>
-                                  <th scope="col">Placa</th>
-                                  <th scope="col">Modelo</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                                <tr>
-                                  <td>{{transmilenio?.placa}}</td>
-                                  <td>{{transmilenio?.modelo}}</td>
-                              </tr>
-                          </tbody>
-                      </table>
+                      <div class="grupoAtributo">
+                        <p class="etiqueta">Placa:</p>
+                        <p>{{transmilenio?.placa}}</p>
+                    </div>
+                    <div class="grupoAtributo">
+                        <p class="etiqueta">Modelo:</p>
+                        <p>{{transmilenio?.modelo}}</p>
+                    </div>
                       <table class="conductor-list table table-striped">
                         <thead class="thead-dark">
                             <tr>

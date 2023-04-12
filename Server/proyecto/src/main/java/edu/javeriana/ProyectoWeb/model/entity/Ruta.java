@@ -32,6 +32,9 @@ public class Ruta {
     @Column(name = "codigo")
     private String codigo;
 
+    @Column(name = "nombre")
+    private String nombre;
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
         name = "ruta_horario",
@@ -73,7 +76,8 @@ public class Ruta {
     List<Transmilenio> listaTransmilenios = new ArrayList<>();
     public Ruta(){};
 
-    public Ruta(String codigo1){
+    public Ruta(String codigo1, String nombre1){
         this.codigo = codigo1;
+        this.nombre = nombre1;
     }
 }

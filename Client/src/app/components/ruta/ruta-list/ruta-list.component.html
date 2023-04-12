@@ -1,43 +1,50 @@
 <html>
-  <body>
+
+<body>
     <div class="wrapper-md-3">
-      <div class="container mainI">
-          <div class="row">
-              <div class="col-md-3 side-image-crud">
-                  <!-------Image-------->
-                  
-              </div>
-              <div class="col-md-5 right">
-                   <div class="input-box">
-                      <h2>Rutas</h2>
-                      <table class="conductor-list table table-striped">
-                          <thead class="thead-dark">
-                              <tr>
-                                  <th scope="col">Código</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                                <tr *ngFor="let ruta of rutas">
-                                    <td>{{ruta.codigo}}</td>
-                                    <td>
-                                        <a class="btn btn-outline-info" [routerLink]="['/ruta/view', ruta.codigo]">Ver</a>
-                                    </td>
-                                    <td>
-                                    <a class="btn btn-outline-info" [routerLink]="['/ruta/update', ruta.codigo]">Editar</a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-outline-info" [routerLink]="['/ruta/view', ruta.codigo]">Eliminar</a>
-                                    </td>
-                              </tr>
-                          </tbody>
-                      </table>
-                      
-                        <a class="btn btn-outline-info" [routerLink]="['create']">Crear</a>
-                    
-                   </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  </body>
+        <div class="container mainI">
+            <div class="row">
+                <div class="col-md-3 side-image-crud">
+                    <!-------Image-------->
+
+                </div>
+                <div class="col-md-5 right">
+                    <div class="input-box">
+                        <div class="input-box">
+                            <h2>Rutas</h2>
+                            <table class="conductor-list table table-striped">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Código</th>
+                                        <th scope="col">Nombre</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let ruta of rutas">
+                                        <td>{{ruta.codigo}}</td>
+                                        <td>{{ruta.nombre}}</td>
+                                        <td>
+                                            <a class="btn btn-outline-info"
+                                                [routerLink]="['/ruta/view', ruta.id]">Ver</a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-outline-info"
+                                                [routerLink]="['/ruta/update', ruta.id]">Editar</a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-outline-info"
+                                                [routerLink]="['/ruta/view', ruta.id]">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a class="btn btn-outline-info" [routerLink]="['create']">Crear</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>

@@ -16,16 +16,12 @@
                                 <tr>
                                     <th scope="col">Cédula</th>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">Teléfono</th>
-                                    <th scope="col">Dirección</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let conductor of conductores">
                                     <td>{{conductor.cedula}}</td>
                                     <td>{{conductor.nombre}}</td>
-                                    <td>{{conductor.telefono}}</td>
-                                    <td>{{conductor.direccion}}</td>
                                     <td>
                                         <a class="btn btn-outline-info"
                                             [routerLink]="['/conductor/view', conductor.id]">Ver</a>

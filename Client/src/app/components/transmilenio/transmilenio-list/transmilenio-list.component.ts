@@ -9,7 +9,7 @@ import { TransmilenioService } from 'src/app/services/transmilenio/transmilenio.
 })
 export class TransmilenioListComponent implements OnInit {
 
-  transmilenios: Transmilenio[] = [];
+  transmilenios: any;
   constructor(
     private transmilenioService: TransmilenioService
   ) { }

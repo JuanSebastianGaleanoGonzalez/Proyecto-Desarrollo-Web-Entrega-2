@@ -1,0 +1,12 @@
+.etiqueta{
+    font-weight: lighter;
+}
+
+.botonesContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.botonesContainer a{
+    margin: 5px;
+}

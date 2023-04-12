@@ -22,13 +22,13 @@
                                     <td>{{transmilenio.placa}}</td>
                                     <td>{{transmilenio.modelo}}</td>
                                     <td>
-                                        <a class="btn btn-outline-info" [routerLink]="['/transmilenio/view', transmilenio.placa]">Ver</a>
+                                        <a class="btn btn-outline-info" [routerLink]="['/transmilenio/view', transmilenio.id]">Ver</a>
                                     </td>
                                     <td>
-                                    <a class="btn btn-outline-info" [routerLink]="['/transmilenio/update', transmilenio.placa]">Editar</a>
+                                    <a class="btn btn-outline-info" [routerLink]="['/transmilenio/update', transmilenio.id]">Editar</a>
                                     </td>
                                     <td>
-                                        <a class="btn btn-outline-info" [routerLink]="['/transmilenio/view', transmilenio.placa]">Eliminar</a>
+                                        <a class="btn btn-outline-info" [routerLink]="['/transmilenio/view', transmilenio.id]">Eliminar</a>
                                     </td>
                               </tr>
                           </tbody>

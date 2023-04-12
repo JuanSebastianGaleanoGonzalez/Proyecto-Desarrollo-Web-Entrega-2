@@ -9,7 +9,7 @@ import { RutaService } from 'src/app/services/ruta/ruta.service';
 })
 export class RutaListComponent implements OnInit {
 
-  rutas: Ruta[] = [];
+  rutas: any;
   constructor(
     private rutaService: RutaService
   ) { }

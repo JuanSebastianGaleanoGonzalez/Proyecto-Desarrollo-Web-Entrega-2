@@ -8,15 +8,14 @@ import { Estacion } from 'src/app/model/estacion/estacion';
 })
 export class RutaService {
 
-  constructor(private http:HttpClient) { }
-  private rutaDB: { [key: number]: Ruta } = { //mapa quemado de base de datos
-    1: new Ruta(123, [new Estacion("Marly"), new Estacion("Calle 45")]),
-    2: new Ruta(1234, [new Estacion("Museo Nacional"), new Estacion("Jimenez"), new Estacion("Calle 39")]),
-  };
-  findAll(): Observable<Ruta[]> {
-    return of(Object.values(this.rutaDB)); //of convierte a Observable
+  private API_SERVER = "http://localhost:8080/ruta"
+
+  constructor(private httpClient:HttpClient) { }
+
+  findAll(): Observable<Ruta> {
+    return this.httpClient.get(this.API_SERVER + `/read` ); //of convierte a Observable
   }
   findById(id: number): Observable<Ruta> {
-    return of(this.rutaDB[2]); // to avoid error, use type  : { [key: number]: Person } 
+    return this.httpClient.get(this.API_SERVER + `/read/${id}`);
   }
 }

@@ -11,9 +11,9 @@ export class ConductorService {
   constructor(private httpClient:HttpClient) { }
 
   findAll(): Observable<Conductor> {
-    return this.httpClient.get(this.API_SERVER + "/read");
+    return this.httpClient.get(this.API_SERVER + `/read`);
   }
   findById(id: number): Observable<Conductor> {
-    return this.httpClient.get(`http://localhost:8080/conductor/read/${id}`); 
+    return this.httpClient.get(this.API_SERVER + `/read/${id}`); 
   }
 }
