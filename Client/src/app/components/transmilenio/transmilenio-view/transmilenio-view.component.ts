@@ -4,6 +4,7 @@ import { TransmilenioService } from 'src/app/services/transmilenio/transmilenio.
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Ruta } from 'src/app/model/ruta/ruta';
 
 @Component({
   selector: 'app-transmilenio-view',
@@ -13,6 +14,7 @@ import { Observable } from 'rxjs';
 export class TransmilenioViewComponent implements OnInit {
 
   transmilenio: Transmilenio | undefined;
+  rutasBus: Ruta[] | undefined;
   constructor(
     private transmilenioService: TransmilenioService,
     private route: ActivatedRoute // captura el parametro
@@ -26,6 +28,9 @@ export class TransmilenioViewComponent implements OnInit {
        //otra forma cuando llegan un valor null automaticamente pone el numero 1 
        //this.personService.findById(+(params.get('id') || 1)) 
  
-     )).subscribe(transmilenio => this.transmilenio = transmilenio);
+     )).subscribe(transmilenio => {
+      this.transmilenio = transmilenio;
+      this.rutasBus = this.transmilenio?.rutas;
+    });
    }
 }

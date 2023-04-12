@@ -31,8 +31,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                              <tr>
-                                <td>{{transmilenio?.placa}}</td>
+                            <tr *ngFor="let ruta of rutasBus">
+                                <td>{{ruta?.codigo}}</td>
+                                <td><a class="btn btn-outline-info" [routerLink]="['/ruta/view', ruta.codigo]">Ver</a></td>
                             </tr>
                         </tbody>
                     </table>

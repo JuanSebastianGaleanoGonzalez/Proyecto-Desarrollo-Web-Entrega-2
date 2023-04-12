@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { Estacion } from 'src/app/model/estacion/estacion';
 import { EstacionesService } from 'src/app/services/estaciones/estaciones.service';
 
@@ -9,12 +9,14 @@ import { EstacionesService } from 'src/app/services/estaciones/estaciones.servic
 })
 export class EstacionListComponent implements OnInit {
 
-  estaciones: Estacion[] = [];
+  @Input()
+  estaciones: Estacion[] | undefined;
+  
   constructor(
-    private estacionService: EstacionesService
+   // private estacionService: EstacionesService
   ) { }
 
   ngOnInit(): void {
-    this.estacionService.findAll().subscribe(estaciones => this.estaciones = estaciones);
+    //this.estacionService.findAll().subscribe(estaciones => this.estaciones = estaciones);
   }
 }

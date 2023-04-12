@@ -4,6 +4,7 @@ import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Ruta } from 'src/app/model/ruta/ruta';
 import { RutaService } from 'src/app/services/ruta/ruta.service';
+import { Estacion } from 'src/app/model/estacion/estacion';
 
 @Component({
   selector: 'app-ruta-view',
@@ -13,6 +14,7 @@ import { RutaService } from 'src/app/services/ruta/ruta.service';
 export class RutaViewComponent implements OnInit {
 
   ruta: Ruta | undefined;
+  estacionesRuta: Estacion[] | undefined;
   constructor(
     private rutaService: RutaService,
     private route: ActivatedRoute // captura el parametro
@@ -25,6 +27,10 @@ export class RutaViewComponent implements OnInit {
        this.rutaService.findById(+params.get('id')!)
        //otra forma cuando llegan un valor null automaticamente pone el numero 1 
        //this.personService.findById(+(params.get('id') || 1)) 
-     )).subscribe(ruta => this.ruta = ruta);
+     )).subscribe(ruta => {
+      this.ruta = ruta;
+      this.estacionesRuta = this.ruta?.estaciones;
+    });
+     
    }
 }
