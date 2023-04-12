@@ -13,7 +13,12 @@ public class ConductorService {
     private ConductorRepository conductorRepository;
 
     public List<Conductor> getConductores(){
-        return (List<Conductor>) conductorRepository.findAll();
+        try{
+            return (List<Conductor>) conductorRepository.findAll();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
     public Conductor getConductor(long id){

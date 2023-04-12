@@ -1,10 +1,14 @@
 package edu.javeriana.ProyectoWeb.model.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import lombok.EqualsAndHashCode;
@@ -31,7 +35,20 @@ public class Conductor {
     @Column(name = "direccion")
     private String direccion;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+        name = "conductor_transmilenio",
+        joinColumns = {
+            @JoinColumn(
+                name = "conductor_id", 
+                referencedColumnName = "id")
+        },
+        inverseJoinColumns = {
+            @JoinColumn(
+                name = "transmilenio_id", 
+                referencedColumnName = "id")
+        }
+    )
     private List<Transmilenio> transmilenios = new ArrayList<>();
 
     public Conductor(){};

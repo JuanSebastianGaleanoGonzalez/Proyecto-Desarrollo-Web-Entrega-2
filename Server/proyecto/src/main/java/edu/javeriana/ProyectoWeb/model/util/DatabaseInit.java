@@ -149,24 +149,11 @@ public class DatabaseInit implements ApplicationRunner {
         horarioRepository.save(new Horario(6,12, DiaSemana.Domingo.toString()));
         horarioRepository.save(new Horario(12,18, DiaSemana.Domingo.toString()));
         horarioRepository.save(new Horario(18,24, DiaSemana.Domingo.toString()));
-        /*for(Conductor conductor: conductorRepository.findAll()){
-            long numero = (long)(Math.random()*(transmilenioRepository.count() + 1));
-            int cantidadBuses = (int)(Math.random()*(transmilenioRepository.count() + 1));
-            for(int iterador = 0; iterador < cantidadBuses; iterador++){
-                Transmilenio aux = transmilenioRepository.findById((long)numero);
-                if(aux != null && !conductor.getTransmilenios().contains(aux)){
-                    while(conductor.getTransmilenios().contains(aux)){
-                        aux = transmilenioRepository.findById((long)numero);
-                    }
-                    conductor.getTransmilenios().add(aux);
-                }
-                numero = (long)(Math.random()*(transmilenioRepository.count() + 1));
-            }
-        }
-*/
+
         for(Ruta ruta: rutaRepository.findAll()){
             long numero = (long)(Math.random()*(horarioRepository.count() + 1));
-            int cantidadHorarios = (int)(Math.random()*(horarioRepository.count() + 1));
+            //int cantidadHorarios = (int)(Math.random()*(horarioRepository.count() + 1));
+            int cantidadHorarios = 3;
             for(int iterador = 0; iterador < cantidadHorarios; iterador++){
                 Horario aux = horarioRepository.findById((long)numero);
                 if(aux != null && !ruta.getHorarios().contains(aux)){
@@ -181,7 +168,8 @@ public class DatabaseInit implements ApplicationRunner {
 
         for(Ruta ruta: rutaRepository.findAll()){
             long numero = (long)(Math.random()*(estacionRepository.count() + 1));
-            int cantidadEstaciones = (int)(Math.random()*(estacionRepository.count() + 1));
+            //int cantidadEstaciones = (int)(Math.random()*(estacionRepository.count() + 1));
+            int cantidadEstaciones = 6;
             for(int iterador = 0; iterador < cantidadEstaciones; iterador++){
                 Estacion aux = estacionRepository.findById((long)numero);
                 if(aux != null && !ruta.getEstaciones().contains(aux)){
@@ -197,7 +185,8 @@ public class DatabaseInit implements ApplicationRunner {
         for(Transmilenio transmilenio: transmilenioRepository.findAll()){
             //Numero de rutas por transmilenio.
             long numero = (long)(Math.random()*(rutaRepository.count() + 1));
-            int cantidadRutas = (int)(Math.random()*(estacionRepository.count() + 1));
+            //int cantidadRutas = (int)(Math.random()*(estacionRepository.count() + 1));
+            int cantidadRutas = 5;
             for(int iterador = 0; iterador < cantidadRutas; iterador++){
                 Ruta aux = rutaRepository.findById((long)numero);
                 if(aux != null && !transmilenio.getRutas().contains(aux)){
@@ -208,6 +197,22 @@ public class DatabaseInit implements ApplicationRunner {
                 }
                 numero = (long)(Math.random()*(estacionRepository.count() + 1));
             } 
+        }
+
+        for(Conductor conductor: conductorRepository.findAll()){
+            long numero = (long)(Math.random()*(transmilenioRepository.count() + 1));
+            //int cantidadBuses = (int)(Math.random()*(transmilenioRepository.count() + 1));
+            int cantidadBuses = 3;
+            for(int iterador = 0; iterador < cantidadBuses; iterador++){
+                Transmilenio aux = transmilenioRepository.findById((long)numero);
+                if(aux != null && !conductor.getTransmilenios().contains(aux)){
+                    while(conductor.getTransmilenios().contains(aux)){
+                        aux = transmilenioRepository.findById((long)numero);
+                    }
+                    conductor.getTransmilenios().add(aux);
+                }
+                numero = (long)(Math.random()*(transmilenioRepository.count() + 1));
+            }
         }
     }
 }

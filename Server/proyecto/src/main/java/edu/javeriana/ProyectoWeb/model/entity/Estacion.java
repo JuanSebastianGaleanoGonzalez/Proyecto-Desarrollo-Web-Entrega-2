@@ -2,11 +2,15 @@ package edu.javeriana.ProyectoWeb.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,7 +28,8 @@ public class Estacion {
     @Column(name = "nombre")
     private String nombre;
 
-    @ManyToMany(mappedBy = "estaciones")
+    @JsonIgnore
+    @ManyToMany(mappedBy = "estaciones", fetch = FetchType.LAZY)
     List<Ruta> listaRutas = new ArrayList<>();
     public Estacion(){};
 
