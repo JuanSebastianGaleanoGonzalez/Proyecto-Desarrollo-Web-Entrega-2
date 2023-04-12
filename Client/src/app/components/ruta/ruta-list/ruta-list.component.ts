@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Ruta } from 'src/app/model/ruta/ruta';
+import { RutaService } from 'src/app/services/ruta/ruta.service';
 
 @Component({
   selector: 'app-ruta-list',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RutaListComponent implements OnInit {
 
-  constructor() { }
+  rutas: Ruta[] = [];
+  constructor(
+    private rutaService: RutaService
+  ) { }
 
   ngOnInit(): void {
+    this.rutaService.findAll().subscribe(rutas => this.rutas = rutas);
   }
-
 }

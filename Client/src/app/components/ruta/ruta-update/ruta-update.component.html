@@ -1,1 +1,31 @@
-<p>ruta-update works!</p>
+<html>
+  <body>
+    <div class="wrapper-md-3">
+      <div class="container mainI">
+          <div class="row">
+              <div class="col-md-3 side-image-crud">
+                  <!-------Image-------->
+                  
+              </div>
+              <div class="col-md-7 right">
+                   <div class="input-box">
+                      <h2>Ruta</h2>
+                      <div class="container">
+                        <form [formGroup]="rutaForm">
+                            Código: <input
+                                [class.is-invalid]="rutaForm.get('codigo')?.touched && rutaForm.get('codigo')?.invalid"
+                                type="number"
+                                class="form-control"
+                                formControlName="codigo"
+                            >
+                        </form>
+                    </div>
+                        <a class="btn btn-outline-info" [routerLink]="['/ruta/list']">Atrás</a>
+                        <button class="btn btn-outline-info" type="submit">Aceptar</button>
+                   </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </body>
+</html>

@@ -1,6 +1,7 @@
 export class Estacion {
-    /*constructor(
-        public nombre: string, public cedula: number, public telefono: number,  public direccion: string
-    ){}*/
+    public nombre?: string | null;
 
+    constructor(nombre?: string | null){
+        this.nombre = nombre
+    }
 }

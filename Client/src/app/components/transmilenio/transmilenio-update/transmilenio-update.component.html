@@ -1,1 +1,38 @@
-<p>transmilenio-update works!</p>
+<html>
+  <body>
+    <div class="wrapper-md-3">
+      <div class="container mainI">
+          <div class="row">
+              <div class="col-md-3 side-image-crud">
+                  <!-------Image-------->
+                  
+              </div>
+              <div class="col-md-7 right">
+                   <div class="input-box">
+                      <h2>Bus</h2>
+                      <div class="container">
+                        <form [formGroup]="transmilenioForm">
+                            Placa: <input
+                                [class.is-invalid]="transmilenioForm.get('placa')?.touched && transmilenioForm.get('placa')?.invalid"
+                                type="number"
+                                class="form-control"
+                                formControlName="placa"
+                            >
+                            Modelo: <input
+                                [class.is-invalid]="transmilenioForm.get('modelo')?.touched && transmilenioForm.get('modelo')?.invalid"
+                                type="number"
+                                class="form-control"
+                                formControlName="modelo"
+                            >
+                        </form>
+                    
+                    </div>
+                        <a class="btn btn-outline-info" [routerLink]="['/transmilenio/list']">Atrás</a>
+                        <button class="btn btn-outline-info" type="submit">Aceptar</button>
+                   </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </body>
+</html>

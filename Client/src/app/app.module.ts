@@ -7,7 +7,6 @@ import { NotfoundComponent } from './components/not-found/notfound.component';
 import { ConductorViewComponent } from './components/conductor/conductor-view/conductor-view.component';
 import { TransmilenioViewComponent } from './components/transmilenio/transmilenio-view/transmilenio-view.component';
 import { RutaViewComponent } from './components/ruta/ruta-view/ruta-view.component';
-import { EstacionViewComponent } from './components/estacion/estacion-view/estacion-view.component';
 import { ConductorListComponent } from './components/conductor/conductor-list/conductor-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,6 +19,7 @@ import { TransmilenioCreateComponent } from './components/transmilenio/transmile
 import { TransmilenioUpdateComponent } from './components/transmilenio/transmilenio-update/transmilenio-update.component';
 import { RutaUpdateComponent } from './components/ruta/ruta-update/ruta-update.component';
 import { RutaCreateComponent } from './components/ruta/ruta-create/ruta-create.component';
+import { EstacionListComponent } from './components/estacion/estacion-list/estacion-list.component';
 
 
 @NgModule({
@@ -28,7 +28,6 @@ import { RutaCreateComponent } from './components/ruta/ruta-create/ruta-create.c
     ConductorViewComponent,
     TransmilenioViewComponent,
     RutaViewComponent,
-    EstacionViewComponent,
     ConductorListComponent,
     HomeComponent,
     NotfoundComponent,
@@ -39,7 +38,8 @@ import { RutaCreateComponent } from './components/ruta/ruta-create/ruta-create.c
     TransmilenioCreateComponent,
     TransmilenioUpdateComponent,
     RutaUpdateComponent,
-    RutaCreateComponent
+    RutaCreateComponent,
+    EstacionListComponent
   ],
   imports: [
     BrowserModule,

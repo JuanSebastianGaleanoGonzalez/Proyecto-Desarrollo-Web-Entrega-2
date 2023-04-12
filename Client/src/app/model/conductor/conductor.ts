@@ -2,7 +2,6 @@ export class Conductor {
     /*constructor(
         public nombre: string, public cedula: number, public telefono: number,  public direccion: string
     ){}*/
-    public id?: number | null;
     public cedula?: number | null;
     public nombre?: string | null;
     public direccion?: string | null;

@@ -17,5 +17,4 @@ export class ConductorListComponent implements OnInit {
   ngOnInit(): void {
     this.conductorService.findAll().subscribe(conductores => this.conductores = conductores);
   }
-
 }

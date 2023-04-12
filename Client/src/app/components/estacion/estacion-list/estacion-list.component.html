@@ -1,0 +1,15 @@
+<div class="input-box">
+    <h2>Estaciones</h2>
+        <table class="conductor-list table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let estacion of estaciones">
+                    <td>{{estacion.nombre}}</td>
+                </tr>
+            </tbody>
+        </table>       
+</div>

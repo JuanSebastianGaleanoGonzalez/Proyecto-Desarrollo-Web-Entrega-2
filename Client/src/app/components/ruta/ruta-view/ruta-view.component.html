@@ -1,1 +1,34 @@
-<p>ruta-view works!</p>
+<html>
+  <body>
+    <div class="wrapper-md-3">
+      <div class="container mainI">
+          <div class="row">
+              <div class="col-md-3 side-image-crud">
+                  <!-------Image-------->
+              </div>
+              <div class="col-md-7 right">
+                   <div class="input-box">
+                      <h2>Ruta</h2>
+                      <table class="conductor-list table table-striped">
+                          <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Código</th>
+                                </tr>
+                          </thead>
+                          <tbody>
+                                <tr>
+                                    <td>{{ruta?.codigo}}</td>
+                                </tr>
+                                <tr>
+                                    <app-estacion-list></app-estacion-list>
+                                </tr>
+                          </tbody>
+                      </table>
+                      <a class="btn btn-outline-info" [routerLink]="['/ruta/list']">Atrás</a>
+                   </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </body>
+</html>

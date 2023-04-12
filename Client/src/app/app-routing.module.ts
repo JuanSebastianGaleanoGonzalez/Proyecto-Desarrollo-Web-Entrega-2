@@ -9,6 +9,12 @@ import { ConductorViewComponent } from './components/conductor/conductor-view/co
 import { ConductorUpdateComponent } from './components/conductor/conductor-update/conductor-update.component';
 import { ConductorCreateComponent } from './components/conductor/conductor-create/conductor-create.component';
 import { TransmilenioViewComponent } from './components/transmilenio/transmilenio-view/transmilenio-view.component';
+import { TransmilenioCreateComponent } from './components/transmilenio/transmilenio-create/transmilenio-create.component';
+import { TransmilenioUpdateComponent } from './components/transmilenio/transmilenio-update/transmilenio-update.component';
+import { RutaViewComponent } from './components/ruta/ruta-view/ruta-view.component';
+import { RutaUpdateComponent } from './components/ruta/ruta-update/ruta-update.component';
+import { RutaCreateComponent } from './components/ruta/ruta-create/ruta-create.component';
+import { EstacionListComponent } from './components/estacion/estacion-list/estacion-list.component';
 const routes:Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', pathMatch: 'full', redirectTo: '/home' },
@@ -17,8 +23,14 @@ const routes:Routes = [
   { path: 'conductor/update/:id', component: ConductorUpdateComponent },
   { path: 'conductor/list/create', component: ConductorCreateComponent },
   { path: 'ruta/list', component: RutaListComponent },
+  { path: 'ruta/view/:id', component: RutaViewComponent },
+  { path: 'ruta/update/:id', component: RutaUpdateComponent },
+  { path: 'ruta/list/create', component: RutaCreateComponent },
+  { path: 'estacion/list', component: EstacionListComponent },
   { path: 'transmilenio/list', component: TransmilenioListComponent },
   { path: 'transmilenio/view/:id', component: TransmilenioViewComponent },
+  { path: 'transmilenio/list/create', component: TransmilenioCreateComponent },
+  { path: 'transmilenio/update/:id', component: TransmilenioUpdateComponent },
   { path: '**', component: NotfoundComponent}
 ]; 
 

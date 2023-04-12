@@ -1,11 +1,10 @@
 import { Component, OnInit} from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConductorEditForm } from 'src/app/forms/conductor-edit-form';
 import { Conductor } from 'src/app/model/conductor/conductor';
 import { ConductorService } from 'src/app/services/conductor/conductor.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-conductor-update',
@@ -32,10 +31,10 @@ export class ConductorUpdateComponent implements OnInit {
       .subscribe((conductor) => {
         this.conductor = conductor;
         this.conductorForm = this.fb.group({
-          nombre: this.conductor?.nombre ?? "",
-          cedula: this.conductor?.cedula ?? null,
-          telefono: this.conductor?.telefono ?? null,
-          direccion: this.conductor?.direccion ?? "",
+          nombre: [this.conductor?.nombre ?? "", Validators.required],
+          cedula: [this.conductor?.cedula ?? null, Validators.required],
+          telefono: [this.conductor?.telefono ?? null, Validators.required],
+          direccion:[this.conductor?.direccion ?? "", Validators.required],
         });
       });
   }
