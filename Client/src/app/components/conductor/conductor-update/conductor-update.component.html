@@ -1,5 +1,4 @@
 <html>
-
 <body>
     <div class="wrapper-md-3">
         <div class="container mainI">
@@ -15,21 +14,21 @@
                             <form (ngSubmit)="actualizarConductor()">
                                 <div>
                                     <label for="nombre">Nombre:</label>
-                                    <input type="text" id="nombre" [(ngModel)]="conductor.nombre" name="nombre">
+                                    <input type="text" class="form-control" id="nombre" [(ngModel)]="conductor.nombre" name="nombre">
                                 </div>
                                 <div>
                                     <label for="cedula">Cédula:</label>
-                                    <input type="number" id="cedula" [(ngModel)]="conductor.cedula" name="precio">
+                                    <input type="number" class="form-control" id="cedula" [(ngModel)]="conductor.cedula" name="cedula">
                                 </div>
                                 <div>
                                     <label for="telefono">Teléfono:</label>
-                                    <input type="number" id="telefono" [(ngModel)]="conductor.telefono" name="precio">
+                                    <input type="number" class="form-control" id="telefono" [(ngModel)]="conductor.telefono" name="telefono">
                                 </div>
                                 <div>
                                     <label for="direccion">Dirección:</label>
-                                    <input type="text" id="direccion" [(ngModel)]="conductor.direccion" name="precio">
+                                    <input type="text" class="form-control" id="direccion" [(ngModel)]="conductor.direccion" name="direccion">
                                 </div>
-                                <button type="submit">Actualizar</button>
+                                <button type="submit" class="btn btn-primary">Actualizar</button>
                             </form>
                         </div>
                         <a class="btn btn-outline-info" [routerLink]="['/conductor/list']">Atrás</a>
