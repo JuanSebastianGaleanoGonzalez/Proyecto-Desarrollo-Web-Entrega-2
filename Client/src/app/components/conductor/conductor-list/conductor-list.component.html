@@ -32,7 +32,8 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-outline-info"
-                                            [routerLink]="['/conductor/view', conductor.id]">Eliminar</a>
+                                            [routerLink]="['/conductor/list']"
+                                            (click)="eliminarConductor(conductor.id)">Eliminar</a>
                                     </td>
                                 </tr>
                             </tbody>

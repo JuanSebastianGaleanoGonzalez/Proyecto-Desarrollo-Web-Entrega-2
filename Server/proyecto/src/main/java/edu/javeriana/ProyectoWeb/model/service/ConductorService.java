@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class ConductorService {
@@ -35,5 +36,14 @@ public class ConductorService {
 
     public void removeConductor(long id){
         conductorRepository.deleteById(id);
+    }
+
+    public void updateConductor(Conductor conductor){
+        Conductor conductor2 = conductorRepository.findById(conductor.getId()).get();
+        conductor2.setCedula(conductor.getCedula());
+        conductor2.setNombre(conductor.getNombre());
+        conductor2.setDireccion(conductor.getDireccion());
+        conductor2.setTelefono(conductor.getTelefono());
+        conductorRepository.save(conductor2);
     }
 }

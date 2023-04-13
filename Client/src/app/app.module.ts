@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RutaListComponent } from './components/ruta/ruta-list/ruta-list.component';
 import { TransmilenioListComponent } from './components/transmilenio/transmilenio-list/transmilenio-list.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ConductorUpdateComponent } from './components/conductor/conductor-update/conductor-update.component';
 import { ConductorCreateComponent } from './components/conductor/conductor-create/conductor-create.component';
 import { TransmilenioCreateComponent } from './components/transmilenio/transmilenio-create/transmilenio-create.component';
@@ -45,7 +45,8 @@ import { EstacionListComponent } from './components/estacion/estacion-list/estac
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,50 +1,43 @@
 <html>
-  <body>
+
+<body>
     <div class="wrapper-md-3">
-      <div class="container mainI">
-          <div class="row">
-              <div class="col-md-3 side-image">
-                  <!-------Image-------->
-                  
-              </div>
-              <div class="col-md-7 right">
-                   <div class="input-box">
-                      <h2>Conductor</h2>
-                      <div class="container">
-                        <form [formGroup]="conductorForm">
-                            Nombre: <input
-                                [class.is-invalid]="conductorForm.get('nombre')?.touched && conductorForm.get('nombre')?.invalid"
-                                type="text"
-                                class="form-control"
-                                formControlName="nombre"
-                            >
-                            Cédula: <input
-                                [class.is-invalid]="conductorForm.get('cedula')?.touched && conductorForm.get('cedula')?.invalid"
-                                type="number"
-                                class="form-control"
-                                formControlName="cedula"
-                            >
-                            Teléfono: <input
-                                [class.is-invalid]="conductorForm.get('telefono')?.touched && conductorForm.get('telefono')?.invalid"
-                                type="number"
-                                class="form-control"
-                                formControlName="telefono"
-                            >
-                            Dirección: <input
-                                [class.is-invalid]="conductorForm.get('direccion')?.touched && conductorForm.get('direccion')?.invalid"
-                                type="text"
-                                class="form-control"
-                                formControlName="direccion"
-                            >
-                        </form>
-                    
-                    </div>
+        <div class="container mainI">
+            <div class="row">
+                <div class="col-md-3 side-image">
+                    <!-------Image-------->
+
+                </div>
+                <div class="col-md-7 right">
+                    <div class="input-box">
+                        <h2>Conductor</h2>
+                        <div class="container">
+                            <form (ngSubmit)="actualizarConductor()">
+                                <div>
+                                    <label for="nombre">Nombre:</label>
+                                    <input type="text" id="nombre" [(ngModel)]="conductor.nombre" name="nombre">
+                                </div>
+                                <div>
+                                    <label for="cedula">Cédula:</label>
+                                    <input type="number" id="cedula" [(ngModel)]="conductor.cedula" name="precio">
+                                </div>
+                                <div>
+                                    <label for="telefono">Teléfono:</label>
+                                    <input type="number" id="telefono" [(ngModel)]="conductor.telefono" name="precio">
+                                </div>
+                                <div>
+                                    <label for="direccion">Dirección:</label>
+                                    <input type="text" id="direccion" [(ngModel)]="conductor.direccion" name="precio">
+                                </div>
+                                <button type="submit">Actualizar</button>
+                            </form>
+                        </div>
                         <a class="btn btn-outline-info" [routerLink]="['/conductor/list']">Atrás</a>
-                        <button class="btn btn-outline-info" type="submit">Aceptar</button>
-                   </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  </body>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>

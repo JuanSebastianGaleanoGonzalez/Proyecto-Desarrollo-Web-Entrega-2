@@ -1,5 +1,6 @@
 package edu.javeriana.ProyectoWeb.model.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,7 +30,7 @@ public class Estacion {
     private String nombre;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "estaciones", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "estaciones", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     List<Ruta> listaRutas = new ArrayList<>();
     public Estacion(){};
 
