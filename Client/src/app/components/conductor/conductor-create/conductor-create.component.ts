@@ -1,32 +1,28 @@
-import { Component} from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ConductorEditForm } from 'src/app/forms/conductor-edit-form';
+import { Component, OnInit } from '@angular/core';
+import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Conductor } from 'src/app/model/conductor/conductor';
+import { ConductorService } from 'src/app/services/conductor/conductor.service';
 @Component({
   selector: 'app-conductor-create',
   templateUrl: './conductor-create.component.html',
   styleUrls: ['./conductor-create.component.css']
 })
 export class ConductorCreateComponent {
-
-  constructor(private fb: FormBuilder) { }
-
-  conductorForm = this.fb.group<ConductorEditForm>({ // Utilización de FormBuilder
-    nombre: this.fb.control('', [Validators.required]),
-    cedula: this.fb.control(null, [Validators.required, Validators.pattern(/^\d+$/), Validators.minLength(2)]),
-    telefono: this.fb.control(null, [Validators.required, Validators.pattern(/^\d+$/), Validators.minLength(2)]),
-    direccion: this.fb.control('', [Validators.required])
-  });
-
-  onSubmit(){
-    let nombre = this.conductorForm.value.nombre;
-    let cedula = this.conductorForm.value.cedula;
-    let telefono = this.conductorForm.value.telefono;
-    let direccion = this.conductorForm.value.direccion;
-
-    //if (nombre !== undefined && nombre !== null && cedula !== undefined && cedula !== null && telefono !== undefined && telefono !== null && direccion !== undefined && direccion !== null) {
-      let conductor: Conductor = new Conductor(nombre, cedula, telefono, direccion);
-    //}
+  conductor: Conductor = new Conductor();
+  conductores: any;
+  conductorForm: FormGroup | undefined;
+  constructor(private fb: FormBuilder, private conductorService: ConductorService, private router: Router) {
+    this.conductorService.findAll().subscribe((conductores => {
+      this.conductores = conductores;
+    }))
   }
 
+  public guardarConductor(): void {
+      this.conductorService.create(this.conductor).subscribe(resp => {
+        this.conductorForm?.reset();
+        this.router.navigate(['/conductor/list'])
+      },
+        error => console.error(error));
+  }
 }
