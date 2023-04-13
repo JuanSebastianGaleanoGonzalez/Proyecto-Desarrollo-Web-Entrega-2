@@ -32,4 +32,11 @@ public class TransmilenioService {
     public void removeTransmilenio(Long id){
         transmilenioRepository.deleteById(id);
     }
+
+    public void updateTransmilenio(Transmilenio transmilenio){
+        Transmilenio transmilenio2 = transmilenioRepository.findById(transmilenio.getId()).get();
+        transmilenio2.setPlaca(transmilenio.getPlaca());
+        transmilenio2.setModelo(transmilenio.getModelo());
+        transmilenioRepository.save(transmilenio2);
+    }
 }

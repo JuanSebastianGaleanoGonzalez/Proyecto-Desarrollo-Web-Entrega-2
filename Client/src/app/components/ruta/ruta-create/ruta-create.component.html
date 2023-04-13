@@ -1,5 +1,4 @@
 <html>
-
 <body>
     <div class="wrapper-md-3">
         <div class="container mainI">
@@ -12,7 +11,17 @@
                     <div class="input-box">
                         <h2>Ruta</h2>
                         <div class="container">
-
+                            <form (ngSubmit)="guardarRuta()">
+                                <div>
+                                    <label for="codigo">Código:</label>
+                                    <input type="text" id="codigo"  class="form-control" [(ngModel)]="ruta.codigo" name="codigo">
+                                </div>
+                                <div>
+                                    <label for="nombre">Nombre:</label>
+                                    <input type="text" id="nombre"  class="form-control" [(ngModel)]="ruta.nombre" name="nombre">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Crear</button>
+                            </form>
                         </div>
                         <a class="btn btn-outline-info" [routerLink]="['/ruta/list']">Atrás</a>
                         <button class="btn btn-outline-info" type="submit">Aceptar</button>

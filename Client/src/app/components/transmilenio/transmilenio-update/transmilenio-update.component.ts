@@ -12,13 +12,14 @@ import { TransmilenioService } from 'src/app/services/transmilenio/transmilenio.
 })
 export class TransmilenioUpdateComponent implements OnInit {
 
-  transmilenio: Transmilenio | undefined;
+  transmilenio: Transmilenio = new Transmilenio();
   transmilenioForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private transmilenioService: TransmilenioService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -35,5 +36,12 @@ export class TransmilenioUpdateComponent implements OnInit {
           modelo: [this.transmilenio?.modelo ?? null, Validators.required]
         });
       });
+  }
+  public actualizarTransmilenio(): void{    
+    this.transmilenioService.update(this.transmilenio).subscribe(resp => {
+      this.transmilenioForm?.reset();
+      this.router.navigate(['/transmilenio/list']);
+    },
+      error => console.error(error));
   }
 }

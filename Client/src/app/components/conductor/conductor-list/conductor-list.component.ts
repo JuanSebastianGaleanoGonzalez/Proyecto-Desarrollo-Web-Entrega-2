@@ -22,7 +22,8 @@ export class ConductorListComponent implements OnInit {
     this.conductorService.delete(id).subscribe(resp => {      
     },
       error => console.error(error));
-    this.conductorService.findAll().subscribe(conductores => {
+    
+      this.conductorService.findAll().subscribe(conductores => {
       this.conductores = conductores;
     })
   }

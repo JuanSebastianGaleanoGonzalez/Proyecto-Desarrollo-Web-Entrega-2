@@ -12,10 +12,19 @@
                     <div class="input-box">
                         <h2>Ruta</h2>
                         <div class="container">
-
+                            <form [formGroup]="rutaForm" (ngSubmit)="actualizarRuta()">
+                                <div>
+                                    <label for="codigo">Código:</label>
+                                    <input type="text" class="form-control" id="codigo" [(ngModel)]="ruta.codigo" formControlName="codigo">
+                                </div>
+                                <div>
+                                    <label for="nombre">Nombre:</label>
+                                    <input type="text" class="form-control" id="nombre" [(ngModel)]="ruta.nombre" formControlName="nombre">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Actualizar</button>
+                            </form>
                         </div>
                         <a class="btn btn-outline-info" [routerLink]="['/ruta/list']">Atrás</a>
-                        <button class="btn btn-outline-info" type="submit">Aceptar</button>
                     </div>
                 </div>
             </div>

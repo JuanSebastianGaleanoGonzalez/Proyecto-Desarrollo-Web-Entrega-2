@@ -12,7 +12,17 @@
                     <div class="input-box">
                         <h2>Bus</h2>
                         <div class="container">
-
+                            <form (ngSubmit)="guardarTransmilenio()">
+                                <div>
+                                    <label for="placa">Placa:</label>
+                                    <input type="text" id="placa"  class="form-control" [(ngModel)]="transmilenio.placa" name="placa">
+                                </div>
+                                <div>
+                                    <label for="modelo">Modelo:</label>
+                                    <input type="number" id="modelo"  class="form-control" [(ngModel)]="transmilenio.modelo" name="modelo">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Crear</button>
+                            </form>
                         </div>
                         <a class="btn btn-outline-info" [routerLink]="['/transmilenio/list']">Atrás</a>
                         <button class="btn btn-outline-info" type="submit">Aceptar</button>

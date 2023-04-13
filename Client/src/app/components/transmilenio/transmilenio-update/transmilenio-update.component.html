@@ -12,6 +12,17 @@
                     <div class="input-box">
                         <h2>Bus</h2>
                         <div class="container">
+                            <form [formGroup]="transmilenioForm" (ngSubmit)="actualizarTransmilenio()">
+                                <div>
+                                    <label for="placa">Placa:</label>
+                                    <input type="text" class="form-control" id="placa" [(ngModel)]="transmilenio.placa" formControlName="placa">
+                                </div>
+                                <div>
+                                    <label for="modelo">Modelo:</label>
+                                    <input type="modelo" class="form-control" id="modelo" [(ngModel)]="transmilenio.modelo" formControlName="modelo">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Actualizar</button>
+                            </form>
                         </div>
                         <a class="btn btn-outline-info" [routerLink]="['/transmilenio/list']">Atrás</a>
                         <button class="btn btn-outline-info" type="submit">Aceptar</button>

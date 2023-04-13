@@ -32,4 +32,11 @@ public class RutaService {
     public void removeRuta(Long id){
         rutaRepository.deleteById(id);
     }
+
+    public void updateRuta(Ruta ruta){
+        Ruta ruta2 = rutaRepository.findById(ruta.getId()).get();
+        ruta2.setCodigo(ruta.getCodigo());
+        ruta2.setNombre(ruta.getNombre());
+        rutaRepository.save(ruta2);
+    }
 }

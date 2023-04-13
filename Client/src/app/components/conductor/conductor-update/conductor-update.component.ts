@@ -30,6 +30,12 @@ export class ConductorUpdateComponent implements OnInit {
       )
       .subscribe((conductor) => {
         this.conductor = conductor;
+        this.conductorForm = this.fb.group({
+          nombre: [this.conductor?.nombre ?? '', Validators.required],
+          cedula: [this.conductor?.cedula ?? null, Validators.required],
+          telefono: [this.conductor?.telefono ?? null, Validators.required],
+          direccion: [this.conductor?.direccion ?? '', Validators.required],
+        });
       });
   }
 
