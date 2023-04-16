@@ -1,56 +1,60 @@
 <html>
 <body>
-    <div class="wrapper-md-3">
-        <div class="container mainI">
-            <div class="row">
-                <div class="col-md-3 side-image">
-                    <!-------Image-------->
-
-                </div>
-                <div class="col-md-7 right">
-                    <div class="conductorViewContainer" class="input-box">
-                        <div class="grupoAtributo">
-                            <p class="etiqueta">Cédula</p>
-                            <p>{{conductor?.cedula}}</p>
-                        </div>
-                        <div class="grupoAtributo">
-                            <p class="etiqueta">Nombre</p>
-                            <p>{{conductor?.nombre}}</p>
-                        </div>
-                        <div class="grupoAtributo">
-                            <p class="etiqueta">Teléfono</p>
-                            <p>{{conductor?.telefono}}</p>
-                        </div>
-                        <div class="grupoAtributo">
-                            <p class="etiqueta">Dirección</p>
-                            <p>{{conductor?.direccion}}</p>
-                        </div>
-                        <div class="busesContenedor">
-                            <h5>Listado de Buses:</h5>
-                            <table class="conductor-list table table-striped">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col">Placa</th>
-                                        <th scope="col">Modelo</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let transmilenio of conductor?.transmilenios">
-                                        <td>{{transmilenio?.placa}}</td>
-                                        <td>{{transmilenio?.modelo}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="botonesContainer">
-                            <a class="btn btn-outline-info" [routerLink]="['/conductor/list']">Atrás</a>
-                            <a class="btn btn-outline-info" [routerLink]="['/conductor/list']">Asignar Transmilenio</a>
+    <section class="page-section about-heading">
+        <div class="container">
+            <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="assets/bus3.png" alt="..." />
+            <div class="about-heading-content">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-10 mx-auto">
+                        <div class="bg-faded rounded p-5">
+                            <h2 class="section-heading mb-4">
+                                <span class="section-heading-upper">ver</span>
+                                <span class="section-heading-lower">Conductor</span>
+                            </h2>
+                            <div >
+                                <div class="grupoAtributo">
+                                    <p class="section-heading mb-4">Cédula</p>
+                                    <p>{{conductor?.cedula}}</p>
+                                </div>
+                                <div class="grupoAtributo">
+                                    <p class="section-heading mb-4">Nombre</p>
+                                    <p>{{conductor?.nombre}}</p>
+                                </div>
+                                <div class="grupoAtributo">
+                                    <p class="section-heading mb-4">Teléfono</p>
+                                    <p>{{conductor?.telefono}}</p>
+                                </div>
+                                <div class="grupoAtributo">
+                                    <p class="section-heading mb-4">Dirección</p>
+                                    <p>{{conductor?.direccion}}</p>
+                                </div>
+                                <div class="busesContenedor">
+                                    <h5 class="section-heading mb-4">Listado de Buses:</h5>
+                                    <table class="conductor-list table table-striped">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col" class="section-heading mb-4">Placa</th>
+                                                <th scope="col" class="section-heading mb-4">Modelo</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let transmilenio of conductor?.transmilenios">
+                                                <td>{{transmilenio?.placa}}</td>
+                                                <td>{{transmilenio?.modelo}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="botonesContainer">
+                                    <a class="btn btn-primary" [routerLink]="['/conductor/list']">Asignar Transmilenio</a>
+                                    <a class="btn btn-secundary" [routerLink]="['/conductor/list']">Atrás</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </body>
-
 </html>

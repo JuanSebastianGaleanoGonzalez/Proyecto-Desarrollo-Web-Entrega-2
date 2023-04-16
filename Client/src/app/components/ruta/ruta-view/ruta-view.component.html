@@ -1,47 +1,50 @@
 <html>
-
 <body>
-    <div class="wrapper-md-3">
-        <div class="container mainI">
-            <div class="row">
-                <div class="col-md-3 side-image-crud">
-                    <!-------Image-------->
-                </div>
-                <div class="col-md-7 right">
-                    <div class="input-box">
-                        <h2>Ruta</h2>
-                        <div class="grupoAtributo">
-                            <p class="etiqueta">Código</p>
-                            <p>{{ruta?.codigo}}</p>
-                        </div>
-                        <div class="grupoAtributo">
-                            <p class="etiqueta">Nombre</p>
-                            <p>{{ruta?.nombre}}</p>
-                        </div>
-                        <div class="estacionesContenedor">
-                            <h5>Listado de Estaciones:</h5>
-                            <table class="conductor-list table table-striped">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col">Nombre</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let estacion of ruta?.estaciones">
-                                        <td>{{estacion?.nombre}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="botonesContainer">
-                            <a class="btn btn-outline-info" [routerLink]="['/conductor/list']">Atrás</a>
-                            <a class="btn btn-outline-info" [routerLink]="['/conductor/list']">Agregar Estación</a>
+    <section class="page-section about-heading">
+        <div class="container">
+            <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="assets/bus4.png" alt="..." />
+            <div class="about-heading-content">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-10 mx-auto">
+                        <div class="bg-faded rounded p-5">
+                            <h2 class="section-heading mb-4">
+                                <span class="section-heading-upper">ver</span>
+                                <span class="section-heading-lower">Ruta</span>
+                            </h2>
+                            <div >
+                                <div class="grupoAtributo">
+                                    <p class="section-heading mb-4">Código</p>
+                                    <p>{{ruta?.codigo}}</p>
+                                </div>
+                                <div class="grupoAtributo">
+                                    <p  class="section-heading mb-4">Nombre</p>
+                                    <p>{{ruta?.nombre}}</p>
+                                </div>
+                                <div class="estacionesContenedor">
+                                    <h5>Listado de Estaciones:</h5>
+                                    <table class="conductor-list table table-striped">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col" class="section-heading mb-4">Nombre</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let estacion of ruta?.estaciones">
+                                                <td>{{estacion?.nombre}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="botonesContainer">
+                                    <a class="btn btn-primary" [routerLink]="['/ruta/list']">Agregar Estación</a>
+                                    <a class="btn btn-secundary" [routerLink]="['/ruta/list']">Atrás</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </body>
-
 </html>

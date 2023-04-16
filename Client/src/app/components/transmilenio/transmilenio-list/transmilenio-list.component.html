@@ -1,45 +1,45 @@
 <html>
-  <body>
-    <div class="wrapper-md-3">
-      <div class="container mainI">
-          <div class="row">
-              <div class="col-md-3 side-image-crud">
-                  <!-------Image-------->
-                  
-              </div>
-              <div class="col-md-5 right">
-                   <div class="input-box">
-                      <h2>Buses</h2>
-                      <table class="conductor-list table table-striped">
-                          <thead class="thead-dark">
-                              <tr>
-                                  <th scope="col">Placa</th>
-                                  <th scope="col">Modelo</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                                <tr *ngFor="let transmilenio of transmilenios">
-                                    <td>{{transmilenio.placa}}</td>
-                                    <td>{{transmilenio.modelo}}</td>
-                                    <td>
-                                        <a class="btn btn-outline-info" [routerLink]="['/transmilenio/view', transmilenio.id]">Ver</a>
-                                    </td>
-                                    <td>
-                                    <a class="btn btn-outline-info" [routerLink]="['/transmilenio/update', transmilenio.id]">Editar</a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-outline-info" [routerLink]="['/transmilenio/view', transmilenio.id]">Eliminar</a>
-                                    </td>
-                              </tr>
-                          </tbody>
-                      </table>
-                      
-                        <a class="btn btn-primary" [routerLink]="['create']">Crear</a>
-                    
-                   </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  </body>
+<body>
+    <section class="page-section about-heading">
+        <div class="container">
+            <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="assets/bus2.png" alt="..." />
+            <div class="about-heading-content">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-10 mx-auto">
+                        <div class="bg-faded rounded p-5">
+                            <h2 class="section-heading mb-4">
+                                <span class="section-heading-upper">listado</span>
+                                <span class="section-heading-lower">Buses</span>
+                            </h2>
+                            <table class="conductor-list table table-striped">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Placa</th>
+                                        <th scope="col">Modelo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                      <tr *ngFor="let transmilenio of transmilenios">
+                                          <td>{{transmilenio.placa}}</td>
+                                          <td>{{transmilenio.modelo}}</td>
+                                          <td>
+                                              <a class="btn btn-outline-dark" [routerLink]="['/transmilenio/view', transmilenio.id]">Ver</a>
+                                          </td>
+                                          <td>
+                                          <a class="btn btn-outline-primary" [routerLink]="['/transmilenio/update', transmilenio.id]">Editar</a>
+                                          </td>
+                                          <td>
+                                              <a class="btn btn-outline-danger" [routerLink]="['/transmilenio/view', transmilenio.id]">Eliminar</a>
+                                          </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a class="btn btn-primary" [routerLink]="['create']">Crear</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
 </html>

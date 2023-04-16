@@ -1,17 +1,16 @@
 <html>
-
 <body>
-    <div class="wrapper-md-3">
-        <div class="container mainI">
-            <div class="row">
-                <div class="col-md-3 side-image-crud">
-                    <!-------Image-------->
-
-                </div>
-                <div class="col-md-7 right">
-                    <div class="input-box">
-                        <h2>Bus</h2>
-                        <div class="container">
+    <section class="page-section about-heading">
+        <div class="container">
+            <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="assets/bus2.png" alt="..." />
+            <div class="about-heading-content">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-10 mx-auto">
+                        <div class="bg-faded rounded p-5">
+                            <h2 class="section-heading mb-4">
+                                <span class="section-heading-upper">crear</span>
+                                <span class="section-heading-lower">Bus</span>
+                            </h2>
                             <form (ngSubmit)="guardarTransmilenio()">
                                 <div>
                                     <label for="placa">Placa:</label>
@@ -23,14 +22,12 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">Crear</button>
                             </form>
+                            <a class="btn btn-secundary" [routerLink]="['/transmilenio/list']">Atrás</a>
                         </div>
-                        <a class="btn btn-outline-info" [routerLink]="['/transmilenio/list']">Atrás</a>
-                        <button class="btn btn-outline-info" type="submit">Aceptar</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </body>
-
 </html>

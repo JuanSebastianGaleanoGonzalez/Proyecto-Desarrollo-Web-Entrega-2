@@ -1,41 +1,45 @@
 <html>
-  <body>
-    <div class="wrapper-md-3">
-      <div class="container mainI">
-          <div class="row">
-              <div class="col-md-3 side-image-crud">
-                  <!-------Image-------->
-                  
-              </div>
-              <div class="col-md-7 right">
-                   <div class="input-box">
-                      <h2>Bus</h2>
-                      <div class="grupoAtributo">
-                        <p class="etiqueta">Placa:</p>
-                        <p>{{transmilenio?.placa}}</p>
+<body>
+    <section class="page-section about-heading">
+        <div class="container">
+            <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="assets/bus2.png" alt="..." />
+            <div class="about-heading-content">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-10 mx-auto">
+                        <div class="bg-faded rounded p-5">
+                            <h2 class="section-heading mb-4">
+                                <span class="section-heading-upper">ver</span>
+                                <span class="section-heading-lower">Bus</span>
+                            </h2>
+                            <div >
+                                <div class="grupoAtributo">
+                                    <p class="etiqueta">Placa:</p>
+                                    <p>{{transmilenio?.placa}}</p>
+                                </div>
+                                <div class="grupoAtributo">
+                                    <p class="etiqueta">Modelo:</p>
+                                    <p>{{transmilenio?.modelo}}</p>
+                                </div>
+                                  <table class="conductor-list table table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">Rutas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let ruta of rutasBus">
+                                            <td>{{ruta?.codigo}}</td>
+                                            <td><a class="btn btn-outline-dark" [routerLink]="['/ruta/view', ruta.codigo]">Ver</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                  <a class="btn btn-secundary" [routerLink]="['/transmilenio/list']">Atrás</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="grupoAtributo">
-                        <p class="etiqueta">Modelo:</p>
-                        <p>{{transmilenio?.modelo}}</p>
-                    </div>
-                      <table class="conductor-list table table-striped">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Rutas</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let ruta of rutasBus">
-                                <td>{{ruta?.codigo}}</td>
-                                <td><a class="btn btn-outline-info" [routerLink]="['/ruta/view', ruta.codigo]">Ver</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                      <a class="btn btn-outline-info" [routerLink]="['/transmilenio/list']">Atrás</a>
-                   </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  </body>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
 </html>

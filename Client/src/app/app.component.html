@@ -1,20 +1,52 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Ponti-Transmilenio</title>
+    <link rel="icon" type="image/x-icon" href="assets/bus_icon.png" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
+</head>
+<body>
 <div>
-    <nav class="navbar navbar-dark bg-primary navbar-dark bg-dark">
-        <a class="navbar-brand" [routerLink]="['/home']">Home</a>
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/conductor/list']">Conductores</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/ruta/list']">Rutas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"  [routerLink]="['/transmilenio/list']">Buses</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">Salir</a>
-            </li>
-        </ul>
+    <header>
+        <h1 class="site-heading text-center text-faded d-none d-lg-block">
+            <span class="site-heading-upper text-primary mb-3">Ponti</span>
+            <span class="site-heading-lower">Transmilenio</span>
+        </h1>
+    </header>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item px-lg-4">
+                        <a class="nav-link text-uppercase" [routerLink]="['/home/']">Home</a>
+                    </li>
+                    <li class="nav-item px-lg-4">
+                        <a class="nav-link text-uppercase" [routerLink]="['/conductor/list']">Conductores</a>
+                    </li>
+                    <li class="nav-item px-lg-4">
+                        <a class="nav-link text-uppercase" [routerLink]="['/ruta/list']">Rutas</a>
+                    </li>
+                    <li class="nav-item px-lg-4">
+                        <a class="nav-link text-uppercase"  [routerLink]="['/transmilenio/list']">Buses</a>
+                    </li>
+                    <li class="nav-item px-lg-4">
+                        <a class="nav-link text-uppercase">Salir</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
     <router-outlet></router-outlet>
 </div>
+<footer class="footer text-faded text-center py-5">
+    <div class="container"><p class="m-0 small">Copyright &copy; Anderson Alvarado 2023</p></div>
+</footer>
+</body>
+</html>
