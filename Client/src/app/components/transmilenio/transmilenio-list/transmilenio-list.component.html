@@ -29,7 +29,9 @@
                                           <a class="btn btn-outline-primary" [routerLink]="['/transmilenio/update', transmilenio.id]">Editar</a>
                                           </td>
                                           <td>
-                                              <a class="btn btn-outline-danger" [routerLink]="['/transmilenio/view', transmilenio.id]">Eliminar</a>
+                                            <a class="btn btn-outline-danger"
+                                            (click)="eliminarTransmilenio(transmilenio.id)" 
+                                            >Eliminar</a>
                                           </td>
                                     </tr>
                                 </tbody>

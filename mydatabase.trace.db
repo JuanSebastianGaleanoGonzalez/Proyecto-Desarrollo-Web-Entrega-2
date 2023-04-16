@@ -325,3 +325,7 @@ The connection was not closed by the application and is garbage collected [90018
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:678)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 92 more
+2023-04-16 01:16:07 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "DELETE[*]* FROM CONDUCTOR WHERE ID=10"; se esperaba "identifier"
+Syntax error in SQL statement "DELETE[*]* FROM CONDUCTOR WHERE ID=10"; expected "identifier"; SQL statement:
+DELETE* FROM CONDUCTOR WHERE ID=10 [42001-214]

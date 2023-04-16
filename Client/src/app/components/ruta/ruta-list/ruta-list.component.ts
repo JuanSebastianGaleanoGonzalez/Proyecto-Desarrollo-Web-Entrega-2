@@ -17,4 +17,10 @@ export class RutaListComponent implements OnInit {
   ngOnInit(): void {
     this.rutaService.findAll().subscribe(rutas => this.rutas = rutas);
   }
+  public eliminarRuta(id: number){
+    this.rutaService.delete(id).subscribe(resp => {  
+      this.rutas.pop(this.rutaService.findById(id));
+    },
+      error => console.error(error));
+  }
 }

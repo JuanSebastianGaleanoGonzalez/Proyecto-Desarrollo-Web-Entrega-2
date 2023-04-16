@@ -18,4 +18,11 @@ export class TransmilenioListComponent implements OnInit {
     this.transmilenioService.findAll().subscribe(transmilenios => this.transmilenios = transmilenios);
   }
 
+  public eliminarTransmilenio(id: number){
+    this.transmilenioService.delete(id).subscribe(resp => {   
+      this.transmilenios.pop(this.transmilenioService.findById(id));
+    },
+      error => console.error(error));
+  }
+
 }
