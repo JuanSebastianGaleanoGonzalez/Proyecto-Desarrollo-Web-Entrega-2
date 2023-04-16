@@ -2,6 +2,7 @@ package edu.javeriana.ProyectoWeb.controller;
 
 import edu.javeriana.ProyectoWeb.model.entity.Conductor;
 import edu.javeriana.ProyectoWeb.model.service.ConductorService;
+import edu.javeriana.ProyectoWeb.model.service.ConductorTransmilenioService;
 
 import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,10 @@ public class ConductorController {
 
     @Autowired
     ConductorService conductorService;
+    
+    @Autowired
+
+    ConductorTransmilenioService conductorTransmilenioService;
 
     @GetMapping(value = "/read")
     public List<Conductor> getConductores(){
@@ -53,11 +58,16 @@ public class ConductorController {
     public Conductor deleteConductor(@PathVariable ("id") Long id){
         Conductor aux = conductorService.getConductor(id);
         try{
-            conductorService.removeConductor(id);
+            if (conductorTransmilenioService.getIdConductor(id) == -1){
+                conductorService.removeConductor(id);
+                return null;
+            }else{
+                return aux;
+            }
+            
         }catch(Exception exception){
             return null;
         }
-        return aux;
     }
     @PutMapping(value = "/update")
     public Conductor updateConductor(@RequestBody Conductor conductor){
