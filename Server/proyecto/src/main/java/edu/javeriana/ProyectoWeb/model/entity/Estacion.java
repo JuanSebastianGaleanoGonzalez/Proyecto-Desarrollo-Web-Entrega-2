@@ -30,7 +30,7 @@ public class Estacion {
     private String nombre;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "estaciones", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "estaciones", fetch = FetchType.LAZY)
     List<Ruta> listaRutas = new ArrayList<>();
     public Estacion(){};
 

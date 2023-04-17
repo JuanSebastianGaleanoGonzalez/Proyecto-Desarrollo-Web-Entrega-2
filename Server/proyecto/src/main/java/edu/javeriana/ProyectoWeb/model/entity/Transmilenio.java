@@ -34,7 +34,7 @@ public class Transmilenio {
     private String modelo;
 
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     @JoinTable(
         name = "transmilenio_ruta",
         joinColumns = {

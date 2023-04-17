@@ -44,6 +44,7 @@ public class ConductorService {
         conductor2.setNombre(conductor.getNombre());
         conductor2.setDireccion(conductor.getDireccion());
         conductor2.setTelefono(conductor.getTelefono());
+        conductor2.setTransmilenios(conductor.getTransmilenios());
         conductorRepository.save(conductor2);
     }
 }

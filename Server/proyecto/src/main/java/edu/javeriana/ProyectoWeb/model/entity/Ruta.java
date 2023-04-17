@@ -35,7 +35,7 @@ public class Ruta {
     @Column(name = "nombre")
     private String nombre;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     @JoinTable(
         name = "ruta_horario",
         joinColumns = {
@@ -53,7 +53,7 @@ public class Ruta {
     )
     List<Horario> horarios = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     @JoinTable(
         name = "ruta_estacion",
         joinColumns = {
