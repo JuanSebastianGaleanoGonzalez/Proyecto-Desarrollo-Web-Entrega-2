@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Conductor } from 'src/app/model/conductor/conductor';
 import { Transmilenio } from 'src/app/model/transmilenio/transmilenio';
+import { ConductorService } from 'src/app/services/conductor/conductor.service';
 import { TransmilenioService } from 'src/app/services/transmilenio/transmilenio.service';
 
 @Component({
@@ -9,20 +11,65 @@ import { TransmilenioService } from 'src/app/services/transmilenio/transmilenio.
 })
 export class TransmilenioListComponent implements OnInit {
 
-  transmilenios: any;
+  transmilenios: Transmilenio[] = [];
+  conductores: Conductor[] = [];
+
   constructor(
-    private transmilenioService: TransmilenioService
+    private transmilenioService: TransmilenioService,
+    private conductorService: ConductorService
   ) { }
 
   ngOnInit(): void {
-    this.transmilenioService.findAll().subscribe(transmilenios => this.transmilenios = transmilenios);
+    this.transmilenioService.findAll().subscribe(transmilenios => {
+      this.transmilenios = transmilenios;
+      this.conductorService.findAll().subscribe(conductores => {
+        this.conductores = conductores;
+      });
+    });
   }
 
-  public eliminarTransmilenio(id: number){
-    this.transmilenioService.delete(id).subscribe(resp => {   
-      this.transmilenios.pop(this.transmilenioService.findById(id));
-    },
-      error => console.error(error));
+  public eliminarTransmilenio(id: number) {
+    let transmilenio: Transmilenio = new Transmilenio();
+    let conductoresTransmilenio: Conductor[] = [];
+    this.transmilenioService.findAll().subscribe(rTransmilenios => {
+      this.transmilenios = rTransmilenios;
+      this.transmilenioService.findById(id).subscribe(rTransmilenio => {
+        transmilenio = rTransmilenio;
+        for (let conductor of this.conductores) {
+          if (this.contains(conductor, transmilenio)) {
+            conductoresTransmilenio.push(conductor);
+          }
+        }
+        if (conductoresTransmilenio.length >= 1) {
+          window.alert(`El transmilenio ${transmilenio.placa} no se puede eliminar porque tiene conductores asignados.`);
+        } else {
+          this.transmilenioService.delete(id).subscribe(response => {
+            this.transmilenios.splice(this.getIndex(this.transmilenios, transmilenio), 1);
+          });
+        }
+      });
+    });
   }
 
+  public contains(conductor: Conductor, transmilenio: Transmilenio): boolean {
+    let comprobante = false;
+    for (let transmilenioConductor of conductor.transmilenios!) {
+      if (transmilenioConductor.id === transmilenio.id) {
+        comprobante = true;
+      }
+    }
+    return comprobante;
+  }
+
+  public getIndex(transmilenios: Transmilenio[], transmilenio: Transmilenio): number {
+    let id: number = -1;
+    let contador: number = 0;
+    for (let transmi of transmilenios) {
+      if (transmi.id === transmilenio.id) {
+        id = contador;
+      }
+      contador++;
+    }
+    return id;
+  }
 }

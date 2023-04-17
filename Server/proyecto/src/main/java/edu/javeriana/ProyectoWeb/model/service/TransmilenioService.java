@@ -25,18 +25,40 @@ public class TransmilenioService {
         }
     }
 
-    public void addTransmilenio(Transmilenio transmilenio){
-        transmilenioRepository.save(transmilenio);
+    public Transmilenio addTransmilenio(Transmilenio transmilenio){
+        try{
+            transmilenioRepository.save(transmilenio);
+            return transmilenio;
+        }catch(Exception e){
+            return null;
+        }
     }
 
-    public void removeTransmilenio(Long id){
-        transmilenioRepository.deleteById(id);
+    public Transmilenio removeTransmilenio(Long id){
+        Transmilenio transmilenio = transmilenioRepository.findById(id).get();
+        Transmilenio transmilenioAux = new Transmilenio();
+        transmilenioAux.setId(transmilenio.getId());
+        transmilenioAux.setPlaca(transmilenio.getPlaca());
+        transmilenioAux.setModelo(transmilenio.getModelo());
+        transmilenioAux.setDia(transmilenio.getDia());
+        try{
+            transmilenioRepository.deleteById(id);
+            return transmilenioAux;
+        }catch(Exception e){
+            return null;
+        }
+
     }
 
-    public void updateTransmilenio(Transmilenio transmilenio){
+    public Transmilenio updateTransmilenio(Transmilenio transmilenio){
         Transmilenio transmilenio2 = transmilenioRepository.findById(transmilenio.getId()).get();
-        transmilenio2.setPlaca(transmilenio.getPlaca());
-        transmilenio2.setModelo(transmilenio.getModelo());
-        transmilenioRepository.save(transmilenio2);
+        try{
+            transmilenio2.setPlaca(transmilenio.getPlaca());
+            transmilenio2.setModelo(transmilenio.getModelo());
+            transmilenioRepository.save(transmilenio2);
+            return transmilenio2;
+        }catch(Exception e){
+            return null;
+        }
     }
 }

@@ -31,23 +31,17 @@ public class TransmilenioController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public void removeTransmilenio(@PathVariable ("id") Long id){
-        transmilenioService.removeTransmilenio(id);
+    public Transmilenio removeTransmilenio(@PathVariable ("id") Long id){
+        return transmilenioService.removeTransmilenio(id);
     }
 
     @PutMapping(value = "/update")
     public Transmilenio updateTransmilenio(@RequestBody Transmilenio transmilenio){
-        Transmilenio aux = transmilenioService.getTransmilenio(transmilenio.getId());
-         if(aux == null){
-            return null;
-         }else{
-            transmilenioService.updateTransmilenio(transmilenio);
-            return transmilenioService.getTransmilenio(transmilenio.getId());
-         }
+        return transmilenioService.updateTransmilenio(transmilenio);
     }
 
     @PostMapping(value = "/create")
-    public void addTransmilenio(@RequestBody Transmilenio transmilenio){
+    public Transmilenio addTransmilenio(@RequestBody Transmilenio transmilenio){
         boolean comprobante = false;
         for(Transmilenio transmilenio2: transmilenioService.getTransmilenios()){
             if(transmilenio2.getPlaca() == transmilenio.getPlaca()){
@@ -56,7 +50,9 @@ public class TransmilenioController {
             }
         }
         if(!comprobante){
-            transmilenioService.addTransmilenio(transmilenio);
+            return transmilenioService.addTransmilenio(transmilenio);
+        }else{
+            return null;
         }
     }
 }

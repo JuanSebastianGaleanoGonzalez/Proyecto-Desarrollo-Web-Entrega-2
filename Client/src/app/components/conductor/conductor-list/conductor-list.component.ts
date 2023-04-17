@@ -9,7 +9,7 @@ import { ConductorService } from 'src/app/services/conductor/conductor.service';
 })
 export class ConductorListComponent implements OnInit {
 
-  conductores: any;
+  conductores: Conductor[] = [];
   constructor(
     private conductorService: ConductorService
   ) { }
@@ -19,16 +19,32 @@ export class ConductorListComponent implements OnInit {
   }
 
   public eliminarConductor(id: number) {
-    this.conductorService.findById(id).subscribe(conductor => {
-      if (conductor?.transmilenios!.length >= 1) {
-        window.alert(`El conductor ${conductor.nombre} no se puede eliminar porque tiene buses asignados.`);
-      } else { 
-        this.conductorService.delete(id).subscribe(response =>{
-          console.log(response);  
-        });
-        this.conductores?.splice(this.conductores?.indexOf(conductor), 1);
-      }
+    
+    this.conductorService.findAll().subscribe(response => {
+      this.conductores = response;
+      this.conductorService.findById(id).subscribe(conductor => {
+        
+        if (conductor?.transmilenios!.length >= 1) {
+          window.alert(`El conductor ${conductor.nombre} no se puede eliminar porque tiene buses asignados.`);
+        } else { 
+          this.conductorService.delete(id).subscribe(response =>{
+            this.conductores?.splice(this.getIndex(this.conductores, conductor), 1);
+          });
+        }
+    });
     },
       error => console.error(error));
+  }
+
+  public getIndex(conductores: Conductor[], conductor: Conductor){
+    let id: number = -1;
+    let contador: number = 0;
+    for(let cond of conductores){
+      if(conductor.id === cond.id){
+        id = contador;
+      }
+      contador++;
+    }
+    return id;
   }
 }

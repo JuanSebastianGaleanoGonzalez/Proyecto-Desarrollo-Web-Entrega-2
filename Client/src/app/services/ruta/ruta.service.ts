@@ -28,7 +28,7 @@ export class RutaService {
   }
 
   public delete(id: number): Observable<Ruta>{
-    return this.httpClient.delete(this.API_SERVER + `/delete/${id}`);
+    return this.httpClient.delete<Ruta>(this.API_SERVER + `/delete/${id}`);
   }
 
   public update(ruta: any): Observable<Ruta>{

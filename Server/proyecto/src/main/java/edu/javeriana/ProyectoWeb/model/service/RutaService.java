@@ -25,18 +25,37 @@ public class RutaService {
         }
     }
 
-    public void addRuta(Ruta ruta){
-        rutaRepository.save(ruta);
+    public Ruta addRuta(Ruta ruta){
+        try{
+            rutaRepository.save(ruta);
+            return ruta;
+        }catch(Exception e){
+            return null;
+        }
     }
 
-    public void removeRuta(Long id){
-        rutaRepository.deleteById(id);
+    public Ruta removeRuta(Long id){
+        Ruta ruta = rutaRepository.findById(id).get();
+        Ruta rutaAux = new Ruta(ruta.getCodigo(), ruta.getNombre());
+        try{
+            rutaRepository.deleteById(id);
+            return rutaAux;
+        }catch(Exception e){
+            return null;
+        }
+
     }
 
-    public void updateRuta(Ruta ruta){
-        Ruta ruta2 = rutaRepository.findById(ruta.getId()).get();
-        ruta2.setCodigo(ruta.getCodigo());
-        ruta2.setNombre(ruta.getNombre());
-        rutaRepository.save(ruta2);
+    public Ruta updateRuta(Ruta ruta){
+        try{
+            Ruta ruta2 = rutaRepository.findById(ruta.getId()).get();
+            ruta2.setCodigo(ruta.getCodigo());
+            ruta2.setNombre(ruta.getNombre());
+            rutaRepository.save(ruta2);
+            return ruta2;
+        }catch(Exception e){
+            return null;
+        }
+
     }
 }

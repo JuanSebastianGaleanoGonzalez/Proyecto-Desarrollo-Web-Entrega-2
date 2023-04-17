@@ -31,7 +31,7 @@ public class ConductorController {
     }
 
     @PostMapping(value = "/create")
-    public void addConductor(@RequestBody Conductor conductor){
+    public Conductor addConductor(@RequestBody Conductor conductor){
         boolean comprobante = false;
         for(Conductor cond: conductorService.getConductores()){
             if(cond.getCedula() == conductor.getCedula()){
@@ -40,30 +40,20 @@ public class ConductorController {
             }
         }
         if(!comprobante){
-            conductorService.addConductor(conductor);
+            return conductorService.addConductor(conductor);
+        }else{
+            return null;
         }
     }
 
     @DeleteMapping(value = "/delete/{id}")
     public Conductor deleteConductor(@PathVariable ("id") Long id){
-        Conductor aux = conductorService.getConductor(id);
-        try{
-            conductorService.removeConductor(id);
-        }catch(Exception exception){
-            return null;
-        }
-        return aux;
+        return conductorService.removeConductor(id);
     }
     
     @PutMapping(value = "/update")
     public Conductor updateConductor(@RequestBody Conductor conductor){
-         Conductor aux = conductorService.getConductor(conductor.getId());
-         if(aux == null){
-            return null;
-         }else{
-            conductorService.updateConductor(conductor);
-            return conductorService.getConductor(conductor.getId());
-         }
+        return conductorService.updateConductor(conductor);
     }
 }
 

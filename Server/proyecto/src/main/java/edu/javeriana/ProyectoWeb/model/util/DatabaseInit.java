@@ -46,9 +46,6 @@ public class DatabaseInit implements ApplicationRunner {
         conductorRepository.save(new Conductor("Daniel Florido", 567890, 345678, "Cra 150 #50-44"));
         conductorRepository.save(new Conductor("Pepe Veraz", 678901, 456789, "Cra 20 #56-44"));
         conductorRepository.save(new Conductor("Speedy Gonzalez", 789012, 567890, "Calle 90 #22-44"));
-        conductorRepository.save(new Conductor("El Pajaro Loco", 890123, 678901, "Calle 150 #44-44"));
-        conductorRepository.save(new Conductor("Bugs Bunny", 901234, 789012, "Calle 13 #99-44"));
-        conductorRepository.save(new Conductor("Perry el Ornitorrinco", 123456, 890123, "Calle 78 #45-44"));
 
         transmilenioRepository.save(new Transmilenio("KLP287", "2011", DiaSemana.Lunes.toString()));
         transmilenioRepository.save(new Transmilenio("MNO825", "2012", DiaSemana.Martes.toString()));
@@ -65,11 +62,6 @@ public class DatabaseInit implements ApplicationRunner {
         transmilenioRepository.save(new Transmilenio("HIJ921", "2011", DiaSemana.Sabado.toString()));
         transmilenioRepository.save(new Transmilenio("KLM587", "2012", DiaSemana.Domingo.toString()));
         transmilenioRepository.save(new Transmilenio("NOP418", "2013", DiaSemana.Lunes.toString()));
-        transmilenioRepository.save(new Transmilenio("QRS295", "2014", DiaSemana.Martes.toString()));
-        transmilenioRepository.save(new Transmilenio("TUV684", "2015", DiaSemana.Miercoles.toString()));
-        transmilenioRepository.save(new Transmilenio("WXY727", "2016", DiaSemana.Jueves.toString()));
-        transmilenioRepository.save(new Transmilenio("ZAB129", "2017", DiaSemana.Viernes.toString()));
-        transmilenioRepository.save(new Transmilenio("CDE909", "2018", DiaSemana.Sabado.toString()));
 
         rutaRepository.save(new Ruta("S42", "Chapinero"));
         rutaRepository.save(new Ruta("E59", "Usaquén"));
@@ -113,14 +105,6 @@ public class DatabaseInit implements ApplicationRunner {
         rutaRepository.save(new Ruta("O29", "Colina Campestre"));
         rutaRepository.save(new Ruta("S65", "Prado Veraniego"));
         rutaRepository.save(new Ruta("E27", "La Floresta"));
-        rutaRepository.save(new Ruta("B96", "Normandía"));
-        rutaRepository.save(new Ruta("A71", "El Tintal"));
-        rutaRepository.save(new Ruta("N90", "La Estrella"));
-        rutaRepository.save(new Ruta("G16", "Barrio Nuevo"));
-        rutaRepository.save(new Ruta("A76", "Las Ferias"));
-        rutaRepository.save(new Ruta("L55", "Madelena"));
-        rutaRepository.save(new Ruta("E33", "Villa Mayor"));
-        rutaRepository.save(new Ruta("A29", "La Serena"));
 
         estacionRepository.save(new Estacion("Calle 116"));
         estacionRepository.save(new Estacion("Avenida 68"));
@@ -300,6 +284,25 @@ public class DatabaseInit implements ApplicationRunner {
                 numero = (long) (Math.random() * (transmilenioRepository.count() + 1));
             }
         }
+
+        conductorRepository.save(new Conductor("El Pajaro Loco", 890123, 678901, "Calle 150 #44-44"));
+        conductorRepository.save(new Conductor("Bugs Bunny", 901234, 789012, "Calle 13 #99-44"));
+        conductorRepository.save(new Conductor("Perry el Ornitorrinco", 123456, 890123, "Calle 78 #45-44"));
+
+        rutaRepository.save(new Ruta("B96", "Normandía"));
+        rutaRepository.save(new Ruta("A71", "El Tintal"));
+        rutaRepository.save(new Ruta("N90", "La Estrella"));
+        rutaRepository.save(new Ruta("G16", "Barrio Nuevo"));
+        rutaRepository.save(new Ruta("A76", "Las Ferias"));
+        rutaRepository.save(new Ruta("L55", "Madelena"));
+        rutaRepository.save(new Ruta("E33", "Villa Mayor"));
+        rutaRepository.save(new Ruta("A29", "La Serena"));
+
+        transmilenioRepository.save(new Transmilenio("QRS295", "2014", DiaSemana.Martes.toString()));
+        transmilenioRepository.save(new Transmilenio("TUV684", "2015", DiaSemana.Miercoles.toString()));
+        transmilenioRepository.save(new Transmilenio("WXY727", "2016", DiaSemana.Jueves.toString()));
+        transmilenioRepository.save(new Transmilenio("ZAB129", "2017", DiaSemana.Viernes.toString()));
+        transmilenioRepository.save(new Transmilenio("CDE909", "2018", DiaSemana.Sabado.toString()));
 
     }
 }
