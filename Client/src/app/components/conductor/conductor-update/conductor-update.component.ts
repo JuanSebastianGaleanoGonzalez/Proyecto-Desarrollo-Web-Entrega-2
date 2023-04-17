@@ -43,6 +43,8 @@ export class ConductorUpdateComponent implements OnInit {
     this.conductorService.update(this.conductor).subscribe(resp => {
       this.conductorForm?.reset();
       this.router.navigate(['/conductor/list']);
+      console.log(resp);
+      
     },
       error => console.error(error));
   }

@@ -17,8 +17,8 @@ export class RutaService {
 
   constructor(private httpClient:HttpClient) { }
 
-  findAll(): Observable<Ruta> {
-    return this.httpClient.get(this.API_SERVER + `/read` ); //of convierte a Observable
+  findAll(): Observable<Ruta[]> {
+    return this.httpClient.get<Ruta[]>(this.API_SERVER + `/read` ); //of convierte a Observable
   }
   findById(id: number): Observable<Ruta> {
     return this.httpClient.get(this.API_SERVER + `/read/${id}`);

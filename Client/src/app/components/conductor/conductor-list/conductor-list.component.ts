@@ -20,7 +20,6 @@ export class ConductorListComponent implements OnInit {
 
   public eliminarConductor(id: number){
     this.conductorService.delete(id).subscribe(resp => {   
-      this.conductores.pop(this.conductorService.findById(id));
     },
       error => console.error(error));
   }

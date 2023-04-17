@@ -9,7 +9,7 @@ export class Conductor {
     public nombre?: string | null;
     public direccion?: string | null;
     public telefono?: number | null;
-    public transmilenios?: Transmilenio[] | null;
+    public transmilenios?: Transmilenio[];
 
     constructor(nombre?: string | null,  cedula?: number | null, telefono?: number | null, direccion?: string | null){
         this.nombre = nombre,

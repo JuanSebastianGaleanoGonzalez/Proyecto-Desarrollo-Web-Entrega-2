@@ -3,7 +3,7 @@ import { Conductor } from 'src/app/model/conductor/conductor';
 import { ConductorService } from 'src/app/services/conductor/conductor.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-conductor-view',
   templateUrl: './conductor-view.component.html',

@@ -17,8 +17,8 @@ export class ConductorService {
   private API_SERVER = "http://localhost:8080/conductor"
   constructor(private httpClient:HttpClient) { }
 
-  public findAll(): Observable<Conductor> {
-    return this.httpClient.get(this.API_SERVER + `/read`);
+  public findAll(): Observable<Conductor[]> {
+    return this.httpClient.get<Conductor[]>(this.API_SERVER + `/read`);
   }
   public findById(id: number): Observable<Conductor> {
     return this.httpClient.get(this.API_SERVER + `/read/${id}`); 

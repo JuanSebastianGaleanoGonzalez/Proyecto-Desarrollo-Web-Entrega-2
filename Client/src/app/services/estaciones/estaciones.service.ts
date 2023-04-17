@@ -16,7 +16,4 @@ export class EstacionesService {
   findAll(): Observable<Estacion[]> {
     return of(Object.values(this.estacionDB)); //of convierte a Observable
   }
-  findById(id: number): Observable<Estacion> {
-    return of(this.estacionDB[1]); // to avoid error, use type  : { [key: number]: Person } 
-  }
 }

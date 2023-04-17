@@ -20,6 +20,7 @@ import { TransmilenioUpdateComponent } from './components/transmilenio/transmile
 import { RutaUpdateComponent } from './components/ruta/ruta-update/ruta-update.component';
 import { RutaCreateComponent } from './components/ruta/ruta-create/ruta-create.component';
 import { EstacionListComponent } from './components/estacion/estacion-list/estacion-list.component';
+import { ConductorAsignComponent } from './components/conductor/conductor-asign/conductor-asign.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { EstacionListComponent } from './components/estacion/estacion-list/estac
     TransmilenioUpdateComponent,
     RutaUpdateComponent,
     RutaCreateComponent,
-    EstacionListComponent
+    EstacionListComponent,
+    ConductorAsignComponent
   ],
   imports: [
     BrowserModule,
