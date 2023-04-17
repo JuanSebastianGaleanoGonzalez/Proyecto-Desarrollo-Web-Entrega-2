@@ -34,8 +34,15 @@ public class ConductorService {
         conductorRepository.save(conductor);
     }
 
-    public void removeConductor(long id){
-        conductorRepository.deleteById(id);
+    public Conductor removeConductor(long id){
+        Conductor conductor = conductorRepository.findById(id).get();
+        try{
+            conductorRepository.deleteById(id);
+            return conductor;          
+        }catch(Exception e){
+            //Print trace
+            return null;
+        }
     }
 
     public void updateConductor(Conductor conductor){
