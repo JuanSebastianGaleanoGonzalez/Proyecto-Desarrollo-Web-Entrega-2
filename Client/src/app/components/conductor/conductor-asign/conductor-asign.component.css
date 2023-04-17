@@ -4,8 +4,8 @@
 }
 
 .divTabla {
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 25px;
+    margin-right: 25px;
     display: flex;
     flex-direction: column;
 }
@@ -14,7 +14,7 @@
     background-color: #ff5e5e;
     color: #000000;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;

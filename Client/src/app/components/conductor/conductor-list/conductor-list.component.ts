@@ -21,7 +21,7 @@ export class ConductorListComponent implements OnInit {
   public eliminarConductor(id: number) {
     this.conductorService.findById(id).subscribe(conductor => {
       if (conductor?.transmilenios!.length >= 1) {
-        window.alert(`El conductor ${conductor.nombre} no se puede eliminar porque tiene buses asignados`);
+        window.alert(`El conductor ${conductor.nombre} no se puede eliminar porque tiene buses asignados.`);
       } else { 
         this.conductorService.delete(id).subscribe(response =>{
           console.log(response);  

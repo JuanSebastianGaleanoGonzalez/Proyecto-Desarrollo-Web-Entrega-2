@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Ruta } from 'src/app/model/ruta/ruta';
+import { Transmilenio } from 'src/app/model/transmilenio/transmilenio';
 import { RutaService } from 'src/app/services/ruta/ruta.service';
+import { TransmilenioService } from 'src/app/services/transmilenio/transmilenio.service';
 
 @Component({
   selector: 'app-ruta-list',
@@ -9,18 +11,50 @@ import { RutaService } from 'src/app/services/ruta/ruta.service';
 })
 export class RutaListComponent implements OnInit {
 
-  rutas: any;
+  rutas: Ruta[] = [];
+  transmilenios: Transmilenio[] = [];
+
   constructor(
-    private rutaService: RutaService
+    private rutaService: RutaService,
+    private transmilenioService: TransmilenioService
   ) { }
 
   ngOnInit(): void {
-    this.rutaService.findAll().subscribe(rutas => this.rutas = rutas);
+    this.rutaService.findAll().subscribe(rutas => {
+      this.rutas = rutas;
+      this.transmilenioService.findAll().subscribe(transmilenios => {
+        this.transmilenios = transmilenios;        
+      });
+    });
   }
-  public eliminarRuta(id: number){
-    this.rutaService.delete(id).subscribe(resp => {  
-      this.rutas.pop(this.rutaService.findById(id));
-    },
-      error => console.error(error));
+
+  public contains(bus: Transmilenio, ruta: Ruta): boolean {
+    let comprobante: boolean = false;
+    for (let rutaTransmilenio of bus.rutas!) {
+      if (ruta.id === rutaTransmilenio.id) {
+        comprobante = true;
+      }
+    }
+    return comprobante;
+  }
+
+  public eliminarRuta(id: number) {
+    let ruta: Ruta = new Ruta();
+    let transmileniosRuta: Transmilenio[] = [];
+    this.rutaService.findById(id).subscribe(response => {
+      ruta = response;
+      for(let transmilenio of this.transmilenios){
+        if(this.contains(transmilenio, ruta)){
+          transmileniosRuta.push(transmilenio);
+        }
+      }
+      if (transmileniosRuta.length >= 1) {
+        window.alert(`La ruta ${ruta.nombre} no se puede eliminar porque tiene buses asignados.`);        
+      } else { 
+        this.rutaService.delete(id).subscribe(response =>{
+        });
+        this.rutas?.splice(this.rutas?.indexOf(ruta), 1);
+      }
+    });
   }
 }
