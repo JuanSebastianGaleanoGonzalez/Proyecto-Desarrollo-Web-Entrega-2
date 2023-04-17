@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 import { Ruta } from 'src/app/model/ruta/ruta';
 import { RutaService } from 'src/app/services/ruta/ruta.service';
 import { Estacion } from 'src/app/model/estacion/estacion';
+import { Transmilenio } from 'src/app/model/transmilenio/transmilenio';
+import { Horario } from 'src/app/model/horario/horario';
+import { TransmilenioService } from 'src/app/services/transmilenio/transmilenio.service';
 
 @Component({
   selector: 'app-ruta-view',
@@ -13,24 +16,42 @@ import { Estacion } from 'src/app/model/estacion/estacion';
 })
 export class RutaViewComponent implements OnInit {
 
-  ruta: Ruta | undefined;
-  estacionesRuta: Estacion[] | undefined;
+  ruta: Ruta = new Ruta();
+  estacionesRuta: Estacion[] = [];
+  transmileniosRuta: Transmilenio[] = [];
+  horariosRuta: Horario[] = [];
+
   constructor(
     private rutaService: RutaService,
-    private route: ActivatedRoute // captura el parametro
+    private transmilenioService: TransmilenioService,
+    private route: ActivatedRoute
     ) { } 
 
     ngOnInit(): void {
-      //se recomienda switchMap para quedarse con el tultimo dato y manejar varias suscripciones
       this.route.paramMap.pipe(switchMap(params =>
-       //cuando se tenga certeza que no es null agregar "!", "+" indica que es tipo numerico 
        this.rutaService.findById(+params.get('id')!)
-       //otra forma cuando llegan un valor null automaticamente pone el numero 1 
-       //this.personService.findById(+(params.get('id') || 1)) 
      )).subscribe(ruta => {
       this.ruta = ruta;
-      this.estacionesRuta = this.ruta?.estaciones;
+      this.estacionesRuta = this.ruta?.estaciones!;
+      this.horariosRuta = this.ruta?.horarios!;
+      this.transmilenioService.findAll().subscribe(response => {
+        for(let transmilenio of response){
+          if(this.contains(transmilenio, this.ruta)){
+            this.transmileniosRuta.push(transmilenio);
+          }
+        }
+      });
     });
      
    }
+
+   public contains(bus: Transmilenio, ruta: Ruta): boolean {
+    let comprobante: boolean = false;
+    for (let rutaTransmilenio of bus.rutas!) {
+      if (ruta.id === rutaTransmilenio.id) {
+        comprobante = true;
+      }
+    }
+    return comprobante;
+  }
 }

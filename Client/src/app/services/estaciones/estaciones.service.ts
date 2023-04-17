@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Estacion } from 'src/app/model/estacion/estacion';
 
@@ -8,12 +8,16 @@ import { Estacion } from 'src/app/model/estacion/estacion';
 })
 export class EstacionesService {
 
-  constructor(private http:HttpClient) { }
-  private estacionDB: { [key: number]: Estacion } = { //mapa quemado de base de datos
-    1: new Estacion("Marly"),
-    2: new Estacion("Calle 45"),
+  private httpOptions = {
+    headers: new HttpHeaders({
+      "Content-Type": "application/json"
+    })
   };
-  findAll(): Observable<Estacion[]> {
-    return of(Object.values(this.estacionDB)); //of convierte a Observable
+  
+  private API_SERVER = "http://localhost:8080/estacion"
+  constructor(private http:HttpClient) { }
+
+  public findAll(): Observable<Estacion[]> {
+    return this.http.get<Estacion[]>(this.API_SERVER + `/read`);
   }
 }

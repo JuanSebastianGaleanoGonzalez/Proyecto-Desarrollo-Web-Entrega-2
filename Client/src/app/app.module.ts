@@ -21,6 +21,9 @@ import { RutaUpdateComponent } from './components/ruta/ruta-update/ruta-update.c
 import { RutaCreateComponent } from './components/ruta/ruta-create/ruta-create.component';
 import { EstacionListComponent } from './components/estacion/estacion-list/estacion-list.component';
 import { ConductorAsignComponent } from './components/conductor/conductor-asign/conductor-asign.component';
+import { RutaAsignEstacionComponent } from './components/ruta/ruta-asign-estacion/ruta-asign-estacion.component';
+import { RutaAsignTransmilenioComponent } from './components/ruta/ruta-asign-transmilenio/ruta-asign-transmilenio.component';
+import { RutaAsignHorarioComponent } from './components/ruta/ruta-asign-horario/ruta-asign-horario.component';
 
 
 @NgModule({
@@ -41,7 +44,10 @@ import { ConductorAsignComponent } from './components/conductor/conductor-asign/
     RutaUpdateComponent,
     RutaCreateComponent,
     EstacionListComponent,
-    ConductorAsignComponent
+    ConductorAsignComponent,
+    RutaAsignEstacionComponent,
+    RutaAsignTransmilenioComponent,
+    RutaAsignHorarioComponent
   ],
   imports: [
     BrowserModule,

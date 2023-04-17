@@ -51,6 +51,8 @@ public class RutaService {
             Ruta ruta2 = rutaRepository.findById(ruta.getId()).get();
             ruta2.setCodigo(ruta.getCodigo());
             ruta2.setNombre(ruta.getNombre());
+            ruta2.setEstaciones(ruta.getEstaciones());
+            ruta2.setHorarios(ruta.getHorarios());
             rutaRepository.save(ruta2);
             return ruta2;
         }catch(Exception e){

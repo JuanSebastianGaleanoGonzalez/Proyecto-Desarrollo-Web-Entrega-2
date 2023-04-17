@@ -36,9 +36,51 @@
                                     </table>
                                 </div>
                                 <div class="botonesContainer">
-                                    <a class="btn btn-primary" [routerLink]="['/ruta/list']">Agregar Estación</a>
-                                    <a class="btn btn-secundary" [routerLink]="['/ruta/list']">Atrás</a>
+                                    <a class="btn btn-primary" [routerLink]="['/ruta/asign/estacion', ruta.id]">Agregar Estación</a>
                                 </div>
+                                <div class="transmileniosContenedor">
+                                    <h5>Listado de Transmilenios:</h5>
+                                    <table class="conductor-list table table-striped">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col" class="section-heading mb-4">Placa</th>
+                                                <th scope="col" class="section-heading mb-4">Modelo</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let transmilenio of transmileniosRuta">
+                                                <td>{{transmilenio?.placa}}</td>
+                                                <td>{{transmilenio?.modelo}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="botonesContainer">
+                                    <a class="btn btn-primary" [routerLink]="['/ruta/asign/transmilenio', ruta.id]">Agregar Transmilenio</a>
+                                </div>
+                                <div class="horariosContenedor">
+                                    <h5>Listado de Horarios:</h5>
+                                    <table class="conductor-list table table-striped">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col" class="section-heading mb-4">Hora Inicio</th>
+                                                <th scope="col" class="section-heading mb-4">Hora Final</th>
+                                                <th scope="col" class="section-heading mb-4">Dia</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let horario of ruta?.horarios">
+                                                <td>{{horario?.horaInicio}}</td>
+                                                <td>{{horario?.horaFinal}}</td>
+                                                <td>{{horario?.diaSemana}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="botonesContainer">
+                                    <a class="btn btn-primary" [routerLink]="['/ruta/asign/horario', ruta.id]">Agregar Horario</a>
+                                </div>
+                                <a class="btn btn-secundary" [routerLink]="['/ruta/list']">Atrás</a>
                             </div>
                         </div>
                     </div>

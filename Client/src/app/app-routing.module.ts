@@ -16,6 +16,9 @@ import { TransmilenioViewComponent } from './components/transmilenio/transmileni
 import { TransmilenioCreateComponent } from './components/transmilenio/transmilenio-create/transmilenio-create.component';
 import { TransmilenioUpdateComponent } from './components/transmilenio/transmilenio-update/transmilenio-update.component';
 import { EstacionListComponent } from './components/estacion/estacion-list/estacion-list.component';
+import { RutaAsignEstacionComponent } from './components/ruta/ruta-asign-estacion/ruta-asign-estacion.component';
+import { RutaAsignTransmilenioComponent } from './components/ruta/ruta-asign-transmilenio/ruta-asign-transmilenio.component';
+import { RutaAsignHorarioComponent } from './components/ruta/ruta-asign-horario/ruta-asign-horario.component';
 
 const routes:Routes = [
   { path: 'home', component: HomeComponent },
@@ -30,6 +33,9 @@ const routes:Routes = [
   { path: 'ruta/update/:id', component: RutaUpdateComponent },
   { path: 'ruta/list/create', component: RutaCreateComponent },
   { path: 'estacion/list', component: EstacionListComponent },
+  { path: 'ruta/asign/estacion/:id', component: RutaAsignEstacionComponent},
+  { path: 'ruta/asign/transmilenio/:id', component: RutaAsignTransmilenioComponent},
+  { path: 'ruta/asign/horario/:id', component: RutaAsignHorarioComponent},
   { path: 'transmilenio/list', component: TransmilenioListComponent },
   { path: 'transmilenio/view/:id', component: TransmilenioViewComponent },
   { path: 'transmilenio/list/create', component: TransmilenioCreateComponent },
