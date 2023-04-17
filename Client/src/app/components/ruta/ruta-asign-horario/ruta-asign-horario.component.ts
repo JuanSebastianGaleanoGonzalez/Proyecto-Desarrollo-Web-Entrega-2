@@ -29,11 +29,11 @@ export class RutaAsignHorarioComponent implements OnInit {
     )).subscribe(ruta => {
       this.ruta = ruta;
       this.horarioService.findAll().subscribe(response => {
-        for(let estacion of response){
-          if(this.contains(ruta, estacion)){
-            this.horariosAsignados.push(estacion);
+        for(let horario of response){
+          if(this.contains(ruta, horario)){
+            this.horariosAsignados.push(horario);
           }else{
-            this.horariosNoAsignados.push(estacion);
+            this.horariosNoAsignados.push(horario);
           }
         }
       });
@@ -42,7 +42,7 @@ export class RutaAsignHorarioComponent implements OnInit {
 
   public contains(ruta: Ruta, horario: Horario): boolean{
     let comprobante = false;
-    for(let hor of ruta.estaciones!){
+    for(let hor of ruta.horarios!){
       if(hor.id === horario.id){
         comprobante = true;
       }

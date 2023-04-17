@@ -55,6 +55,8 @@ public class TransmilenioService {
         try{
             transmilenio2.setPlaca(transmilenio.getPlaca());
             transmilenio2.setModelo(transmilenio.getModelo());
+            transmilenio2.setConductores(transmilenio.getConductores());
+            transmilenio2.setRutas(transmilenio.getRutas());
             transmilenioRepository.save(transmilenio2);
             return transmilenio2;
         }catch(Exception e){

@@ -1,1 +1,74 @@
-<p>ruta-asign-transmilenio works!</p>
+<html>
+
+<body>
+    <section class="page-section about-heading">
+        <div class="container">
+            <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="assets/bus4.png" alt="..." />
+            <div class="about-heading-content">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-10 mx-auto">
+                        <div class="bg-faded rounded p-5">
+                            <h2 class="section-heading mb-4">
+                                <span class="section-heading-upper">ver</span>
+                                <span class="section-heading-lower">Ruta</span>
+                            </h2>
+                            <div>
+                                <div class="grupoAtributo">
+                                    <p class="section-heading mb-4">Código</p>
+                                    <p>{{ruta.codigo}}</p>
+                                </div>
+                                <div class="grupoAtributo">
+                                    <p class="section-heading mb-4">Nombre</p>
+                                    <p>{{ruta.nombre}}</p>
+                                </div>
+                                <div class="containerTablas">
+                                    <div class="divTabla">
+                                        <p>Asignados:</p>
+                                        <table class="conductor-list table table-striped">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col" class="section-heading mb-4">Placa</th>
+                                                    <th scope="col" class="section-heading mb-4">Modelo</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let transmilenio of transmileniosAsignados">
+                                                    <td>{{transmilenio.placa}}</td>
+                                                    <td>{{transmilenio.modelo}}</td>
+                                                    <a class="btn botonEliminar"
+                                                        (click)="eliminarTransmilenioRuta(transmilenio)">Eliminar</a>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="divTabla">
+                                        <p> No asignados:</p>
+                                        <table class="conductor-list table table-striped">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col" class="section-heading mb-4">Placa</th>
+                                                    <th scope="col" class="section-heading mb-4">Modelo</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let transmilenio of transmileniosNoAsignados">
+                                                    <td>{{transmilenio.placa}}</td>
+                                                    <td>{{transmilenio.modelo}}</td>
+                                                    <a class="btn botonAgregar"
+                                                        (click)="agregarTransmilenioRuta(transmilenio)">Agregar</a>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="btn btn-secundary" [routerLink]="['/ruta/view', ruta.id]">Atrás</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
