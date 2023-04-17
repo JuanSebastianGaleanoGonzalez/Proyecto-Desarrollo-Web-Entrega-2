@@ -50,31 +50,26 @@ public class DatabaseInit implements ApplicationRunner {
         conductorRepository.save(new Conductor("Bugs Bunny", 901234, 789012, "Calle 13 #99-44"));
         conductorRepository.save(new Conductor("Perry el Ornitorrinco", 123456, 890123, "Calle 78 #45-44"));
 
-        transmilenioRepository.save(new Transmilenio("ADX123", "2014"));
-        transmilenioRepository.save(new Transmilenio("MNB456", "2018"));
-        transmilenioRepository.save(new Transmilenio("JLM789", "2015"));
-        transmilenioRepository.save(new Transmilenio("QWE321", "2013"));
-        transmilenioRepository.save(new Transmilenio("TYU654", "2019"));
-        transmilenioRepository.save(new Transmilenio("BNM987", "2017"));
-        transmilenioRepository.save(new Transmilenio("POI246", "2012"));
-        transmilenioRepository.save(new Transmilenio("KJH753", "2016"));
-        transmilenioRepository.save(new Transmilenio("DFG159", "2020"));
-        transmilenioRepository.save(new Transmilenio("ASD357", "2012"));
-        transmilenioRepository.save(new Transmilenio("LLO468", "2013"));
-        transmilenioRepository.save(new Transmilenio("WER369", "2014"));
-        transmilenioRepository.save(new Transmilenio("LKJ852", "2015"));
-        transmilenioRepository.save(new Transmilenio("GHJ741", "2016"));
-        transmilenioRepository.save(new Transmilenio("PLO963", "2017"));
-        transmilenioRepository.save(new Transmilenio("VCX753", "2018"));
-        transmilenioRepository.save(new Transmilenio("MPO951", "2019"));
-        transmilenioRepository.save(new Transmilenio("NBV456", "2020"));
-        transmilenioRepository.save(new Transmilenio("QWE753", "2021"));
-        transmilenioRepository.save(new Transmilenio("TRE258", "2013"));
-        transmilenioRepository.save(new Transmilenio("BNM369", "2014"));
-        transmilenioRepository.save(new Transmilenio("IOP951", "2015"));
-        transmilenioRepository.save(new Transmilenio("QAZ357", "2016"));
-        transmilenioRepository.save(new Transmilenio("PLM789", "2017"));
-        transmilenioRepository.save(new Transmilenio("MNB951", "2018"));        
+        transmilenioRepository.save(new Transmilenio("KLP287", "2011", DiaSemana.Lunes.toString()));
+        transmilenioRepository.save(new Transmilenio("MNO825", "2012", DiaSemana.Martes.toString()));
+        transmilenioRepository.save(new Transmilenio("PQR490", "2013", DiaSemana.Miercoles.toString()));
+        transmilenioRepository.save(new Transmilenio("ABC752", "2014", DiaSemana.Jueves.toString()));
+        transmilenioRepository.save(new Transmilenio("DEF943", "2015", DiaSemana.Viernes.toString()));
+        transmilenioRepository.save(new Transmilenio("GHI631", "2016", DiaSemana.Sabado.toString()));
+        transmilenioRepository.save(new Transmilenio("JKL205", "2017", DiaSemana.Domingo.toString()));
+        transmilenioRepository.save(new Transmilenio("STU180", "2018", DiaSemana.Lunes.toString()));
+        transmilenioRepository.save(new Transmilenio("VWX305", "2019", DiaSemana.Martes.toString()));
+        transmilenioRepository.save(new Transmilenio("YZA491", "2020", DiaSemana.Miercoles.toString()));
+        transmilenioRepository.save(new Transmilenio("BCD835", "2021", DiaSemana.Jueves.toString()));
+        transmilenioRepository.save(new Transmilenio("EFG526", "2010", DiaSemana.Viernes.toString()));
+        transmilenioRepository.save(new Transmilenio("HIJ921", "2011", DiaSemana.Sabado.toString()));
+        transmilenioRepository.save(new Transmilenio("KLM587", "2012", DiaSemana.Domingo.toString()));
+        transmilenioRepository.save(new Transmilenio("NOP418", "2013", DiaSemana.Lunes.toString()));
+        transmilenioRepository.save(new Transmilenio("QRS295", "2014", DiaSemana.Martes.toString()));
+        transmilenioRepository.save(new Transmilenio("TUV684", "2015", DiaSemana.Miercoles.toString()));
+        transmilenioRepository.save(new Transmilenio("WXY727", "2016", DiaSemana.Jueves.toString()));
+        transmilenioRepository.save(new Transmilenio("ZAB129", "2017", DiaSemana.Viernes.toString()));
+        transmilenioRepository.save(new Transmilenio("CDE909", "2018", DiaSemana.Sabado.toString()));
 
         rutaRepository.save(new Ruta("S42", "Chapinero"));
         rutaRepository.save(new Ruta("E59", "Usaquén"));
@@ -252,6 +247,7 @@ public class DatabaseInit implements ApplicationRunner {
                 }
                 numero = (long) (Math.random() * (horarioRepository.count() + 1));
             }
+
         }
 
         for (Ruta ruta : rutaRepository.findAll()) {
@@ -304,5 +300,6 @@ public class DatabaseInit implements ApplicationRunner {
                 numero = (long) (Math.random() * (transmilenioRepository.count() + 1));
             }
         }
+
     }
 }

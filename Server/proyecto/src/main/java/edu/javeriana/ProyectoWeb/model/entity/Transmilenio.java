@@ -17,8 +17,11 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import edu.javeriana.ProyectoWeb.model.util.DiaSemana;
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -32,7 +35,8 @@ public class Transmilenio {
     private String placa;
     @Column(name = "modelo")
     private String modelo;
-
+    @Column(name = "dia")
+    private String dia;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     @JoinTable(
@@ -55,10 +59,12 @@ public class Transmilenio {
     @JsonIgnore
     @ManyToMany(mappedBy = "transmilenios", fetch = FetchType.LAZY)
     private List<Conductor> conductores = new ArrayList<>();
-    public Transmilenio(){};
 
-    public Transmilenio(String placa1, String modelo1){
-        this.placa = placa1;
-        this.modelo = modelo1;
+    public Transmilenio(){};
+    
+    public Transmilenio(String placA, String modelO, String dia){
+        this.placa = placA;
+        this.modelo = modelO;
+        this.dia = dia;
     }
 }

@@ -38,13 +38,15 @@
                                                     <tr>
                                                         <th scope="col" class="section-heading mb-4">Placa</th>
                                                         <th scope="col" class="section-heading mb-4">Modelo</th>
+                                                        <th scope="col" class="section-heading mb-4">Día</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr *ngFor="let transmilenio of busesAsignados">
                                                         <td>{{transmilenio?.placa}}</td>
                                                         <td>{{transmilenio?.modelo}}</td>
-                                                        <a class="btn" (click)="eliminarTransmilenioConductor(transmilenio)">Eliminar</a>
+                                                        <td>{{transmilenio?.dia}}</td>
+                                                        <a class="btn botonEliminar" (click)="eliminarTransmilenioConductor(transmilenio)">Eliminar</a>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -56,13 +58,15 @@
                                                     <tr>
                                                         <th scope="col" class="section-heading mb-4">Placa</th>
                                                         <th scope="col" class="section-heading mb-4">Modelo</th>
+                                                        <th scope="col" class="section-heading mb-4">Día</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr *ngFor="let transmilenio of busesNoAsignados">
                                                         <td>{{transmilenio?.placa}}</td>
                                                         <td>{{transmilenio?.modelo}}</td>
-                                                        <a class="btn" (click)="agregarTransmilenioConductor(transmilenio)">Agregar</a>
+                                                        <td>{{transmilenio?.dia}}</td>
+                                                        <a class="btn botonAgregar" (click)="agregarTransmilenioConductor(transmilenio)">Agregar</a>
                                                     </tr>
                                                 </tbody>
                                             </table>

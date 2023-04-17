@@ -35,12 +35,14 @@
                                             <tr>
                                                 <th scope="col" class="section-heading mb-4">Placa</th>
                                                 <th scope="col" class="section-heading mb-4">Modelo</th>
+                                                <th scope="col" class="section-heading mb-4">Día Asignado</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr *ngFor="let transmilenio of conductor?.transmilenios">
                                                 <td>{{transmilenio?.placa}}</td>
                                                 <td>{{transmilenio?.modelo}}</td>
+                                                <td>{{transmilenio?.dia}}</td>
                                             </tr>
                                         </tbody>
                                     </table>

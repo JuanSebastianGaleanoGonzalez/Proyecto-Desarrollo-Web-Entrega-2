@@ -29,7 +29,7 @@
                                     <tbody>
                                         <tr *ngFor="let ruta of rutasBus">
                                             <td>{{ruta?.codigo}}</td>
-                                            <td><a class="btn btn-outline-dark" [routerLink]="['/ruta/view', ruta.codigo]">Ver</a></td>
+                                            <td><a class="btn btn-outline-dark" [routerLink]="['/ruta/view', ruta.id]">Ver</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
