@@ -30,30 +30,32 @@ export class ConductorListComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí'
     }).then((result) => {
-      this.conductorService.findAll().subscribe(response => {
-        this.conductores = response;
-        this.conductorService.findById(id).subscribe(conductor => {
-          if (conductor?.transmilenios!.length >= 1) {
-            Swal.fire({
-              icon: 'error',
-              title: 'No Eliminado',
-              text: 'El Conductor ' + conductor.name +' no se puede eliminar porque tiene buses asignados.'
-            })
-          } else { 
-            this.conductorService.delete(id).subscribe(response =>{
-              this.conductores?.splice(this.getIndex(this.conductores, conductor), 1);
-            });
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Conductor Eliminado',
-              showConfirmButton: false,
-              timer: 1500
-            })
-          }
-      });
-      },
-        error => console.error(error));
+      if (result.isConfirmed){
+        this.conductorService.findAll().subscribe(response => {
+          this.conductores = response;
+          this.conductorService.findById(id).subscribe(conductor => {
+            if (conductor?.transmilenios!.length >= 1) {
+              Swal.fire({
+                icon: 'error',
+                title: 'No Eliminado',
+                text: 'El Conductor ' + conductor.nombre +' no se puede eliminar porque tiene buses asignados.'
+              })
+            } else { 
+              this.conductorService.delete(id).subscribe(response =>{
+                this.conductores?.splice(this.getIndex(this.conductores, conductor), 1);
+              });
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Conductor Eliminado',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            }
+        });
+        },
+          error => console.error(error));
+      } 
     })
   }
 

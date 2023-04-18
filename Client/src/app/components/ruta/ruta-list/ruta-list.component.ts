@@ -24,7 +24,7 @@ export class RutaListComponent implements OnInit {
     this.rutaService.findAll().subscribe(rutas => {
       this.rutas = rutas;
       this.transmilenioService.findAll().subscribe(transmilenios => {
-        this.transmilenios = transmilenios;        
+        this.transmilenios = transmilenios;
       });
     });
   }
@@ -40,7 +40,7 @@ export class RutaListComponent implements OnInit {
   }
 
   public eliminarRuta(id: number) {
-    
+
     Swal.fire({
       title: '¿Seguro de Eliminarla?',
       text: "Eliminar esta Ruta",
@@ -50,46 +50,47 @@ export class RutaListComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí'
     }).then((result) => {
-      let ruta: Ruta = new Ruta();
-    let transmileniosRuta: Transmilenio[] = [];
-    this.rutaService.findAll().subscribe(responseRutas => {
-      this.rutas = responseRutas;
-      this.rutaService.findById(id).subscribe(response => {
-        ruta = response;
-        for(let transmilenio of this.transmilenios){
-          if(this.contains(transmilenio, ruta)){
-            transmileniosRuta.push(transmilenio);
-          }
-        }
-        if (transmileniosRuta.length >= 1) {
-          Swal.fire({
-            icon: 'error',
-            title: 'No Eliminada',
-            text: 'La Ruta ' + ruta.nombre +' no se puede eliminar porque tiene buses asignados.'
-          })        
-        } else { 
-            this.rutaService.delete(id).subscribe(response =>{            
-            this.rutas.splice(this.getIndex(this.rutas, ruta), 1);
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Ruta Eliminada',
-              showConfirmButton: false,
-              timer: 1500
-            })
+      if (result.isConfirmed) {
+        let ruta: Ruta = new Ruta();
+        let transmileniosRuta: Transmilenio[] = [];
+        this.rutaService.findAll().subscribe(responseRutas => {
+          this.rutas = responseRutas;
+          this.rutaService.findById(id).subscribe(response => {
+            ruta = response;
+            for (let transmilenio of this.transmilenios) {
+              if (this.contains(transmilenio, ruta)) {
+                transmileniosRuta.push(transmilenio);
+              }
+            }
+            if (transmileniosRuta.length >= 1) {
+              Swal.fire({
+                icon: 'error',
+                title: 'No Eliminada',
+                text: 'La Ruta ' + ruta.nombre + ' no se puede eliminar porque tiene buses asignados.'
+              })
+            } else {
+              this.rutaService.delete(id).subscribe(response => {
+                this.rutas.splice(this.getIndex(this.rutas, ruta), 1);
+                Swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: 'Ruta Eliminada',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+              });
+            }
           });
-        }
-      });
+        });
+      }
     });
-    })
-    
   }
 
-  public getIndex(rutas: Ruta[], ruta: Ruta): number{
+  public getIndex(rutas: Ruta[], ruta: Ruta): number {
     let id: number = -1;
     let contador: number = 0;
-    for(let rut of rutas){
-      if(rut.id === ruta.id){
+    for (let rut of rutas) {
+      if (rut.id === ruta.id) {
         id = contador;
       }
       contador++;

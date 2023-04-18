@@ -39,6 +39,7 @@ export class TransmilenioListComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí'
     }).then((result) => {
+      if (result.isConfirmed) {
         let transmilenio: Transmilenio = new Transmilenio();
         let conductoresTransmilenio: Conductor[] = [];
         this.transmilenioService.findAll().subscribe(rTransmilenios => {
@@ -51,14 +52,13 @@ export class TransmilenioListComponent implements OnInit {
               }
             }
             if (conductoresTransmilenio.length >= 1) {
-              window.alert(`El transmilenio ${transmilenio.placa} no se puede eliminar porque tiene conductores asignados.`);
               Swal.fire({
                 icon: 'error',
                 title: 'No Eliminado',
-                text: 'El bus' + transmilenio.placa +' no se puede eliminar porque tiene conductores asignados.'
-              })  
+                text: 'El bus' + transmilenio.placa + ' no se puede eliminar porque tiene conductores asignados.'
+              })
             } else {
-                this.transmilenioService.delete(id).subscribe(response => {
+              this.transmilenioService.delete(id).subscribe(response => {
                 this.transmilenios.splice(this.getIndex(this.transmilenios, transmilenio), 1);
                 Swal.fire({
                   position: 'top-end',
@@ -71,7 +71,8 @@ export class TransmilenioListComponent implements OnInit {
             }
           });
         });
-    })
+      }
+    });
   }
 
   public contains(conductor: Conductor, transmilenio: Transmilenio): boolean {
