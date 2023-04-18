@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Conductor } from 'src/app/model/conductor/conductor';
 import { ConductorService } from 'src/app/services/conductor/conductor.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-conductor-list',
@@ -20,20 +21,40 @@ export class ConductorListComponent implements OnInit {
 
   public eliminarConductor(id: number) {
     
-    this.conductorService.findAll().subscribe(response => {
-      this.conductores = response;
-      this.conductorService.findById(id).subscribe(conductor => {
-        
-        if (conductor?.transmilenios!.length >= 1) {
-          window.alert(`El conductor ${conductor.nombre} no se puede eliminar porque tiene buses asignados.`);
-        } else { 
-          this.conductorService.delete(id).subscribe(response =>{
-            this.conductores?.splice(this.getIndex(this.conductores, conductor), 1);
-          });
-        }
-    });
-    },
-      error => console.error(error));
+    Swal.fire({
+      title: '¿Seguro de Eliminarlo?',
+      text: "Eliminar este Conductor",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí'
+    }).then((result) => {
+      this.conductorService.findAll().subscribe(response => {
+        this.conductores = response;
+        this.conductorService.findById(id).subscribe(conductor => {
+          if (conductor?.transmilenios!.length >= 1) {
+            Swal.fire({
+              icon: 'error',
+              title: 'No Eliminado',
+              text: 'El Conductor ' + conductor.name +' no se puede eliminar porque tiene buses asignados.'
+            })
+          } else { 
+            this.conductorService.delete(id).subscribe(response =>{
+              this.conductores?.splice(this.getIndex(this.conductores, conductor), 1);
+            });
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Conductor Eliminado',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
+      });
+      },
+        error => console.error(error));
+    })
   }
 
   public getIndex(conductores: Conductor[], conductor: Conductor){
