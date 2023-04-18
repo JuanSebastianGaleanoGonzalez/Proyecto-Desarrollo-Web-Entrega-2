@@ -53,7 +53,6 @@ export class TransmilenioAsignConductorComponent implements OnInit {
   public agregarConductorTransmilenio(conductor: Conductor){
     conductor.transmilenios?.push(this.transmilenio);
     this.conductoresAsignados.push(conductor);
-    console.log(conductor);
     this.conductoresNoAsignados.splice(this.getIndex(this.conductoresNoAsignados, conductor), 1);
     this.conductorService.update(conductor).subscribe(response => {
     });
@@ -62,7 +61,6 @@ export class TransmilenioAsignConductorComponent implements OnInit {
   public eliminarConductorTransmilenio(conductor: Conductor){
     conductor.transmilenios?.splice(this.getIndex(conductor.transmilenios, this.transmilenio), 1);
     this.conductoresAsignados.splice(this.getIndex(this.conductoresAsignados, conductor), 1);
-    console.log(conductor);
     this.conductoresNoAsignados.push(conductor);
     this.conductorService.update(conductor).subscribe(response => {
     });
