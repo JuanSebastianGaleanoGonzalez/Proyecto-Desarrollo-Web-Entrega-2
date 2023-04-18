@@ -19,6 +19,8 @@ import { EstacionListComponent } from './components/estacion/estacion-list/estac
 import { RutaAsignEstacionComponent } from './components/ruta/ruta-asign-estacion/ruta-asign-estacion.component';
 import { RutaAsignTransmilenioComponent } from './components/ruta/ruta-asign-transmilenio/ruta-asign-transmilenio.component';
 import { RutaAsignHorarioComponent } from './components/ruta/ruta-asign-horario/ruta-asign-horario.component';
+import { TransmilenioAsignConductorComponent } from './components/transmilenio/transmilenio-asign-conductor/transmilenio-asign-conductor.component';
+import { TransmilenioAsignRutaComponent } from './components/transmilenio/transmilenio-asign-ruta/transmilenio-asign-ruta.component';
 
 const routes:Routes = [
   { path: 'home', component: HomeComponent },
@@ -40,6 +42,8 @@ const routes:Routes = [
   { path: 'transmilenio/view/:id', component: TransmilenioViewComponent },
   { path: 'transmilenio/list/create', component: TransmilenioCreateComponent },
   { path: 'transmilenio/update/:id', component: TransmilenioUpdateComponent },
+  { path: 'transmilenio/asign/conductor/:id', component: TransmilenioAsignConductorComponent},
+  { path: 'transmilenio/asign/ruta/:id', component: TransmilenioAsignRutaComponent},
   { path: '**', component: NotfoundComponent}
 ]; 
 

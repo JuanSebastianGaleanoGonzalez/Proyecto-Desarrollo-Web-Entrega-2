@@ -21,7 +21,7 @@ export class RutaAsignTransmilenioComponent implements OnInit {
     private rutaService: RutaService,
     private transmilenioService: TransmilenioService,
     private route: ActivatedRoute
-  ) {} 
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.pipe(switchMap(params =>
@@ -29,10 +29,10 @@ export class RutaAsignTransmilenioComponent implements OnInit {
     )).subscribe(ruta => {
       this.ruta = ruta;
       this.transmilenioService.findAll().subscribe(response => {
-        for(let transmilenio of response){
-          if(this.contains(transmilenio, ruta)){
+        for (let transmilenio of response) {
+          if (this.contains(transmilenio, ruta)) {
             this.transmileniosAsignados.push(transmilenio);
-          }else{
+          } else {
             this.transmileniosNoAsignados.push(transmilenio);
           }
         }
@@ -61,8 +61,22 @@ export class RutaAsignTransmilenioComponent implements OnInit {
   public eliminarTransmilenioRuta(transmilenio: Transmilenio) {
     this.transmileniosAsignados.splice(this.transmileniosAsignados.indexOf(transmilenio), 1);
     this.transmileniosNoAsignados.push(transmilenio);
-    transmilenio.rutas?.splice(transmilenio.rutas.indexOf(this.ruta), 1);
-    this.transmilenioService.update(transmilenio).subscribe(response => {
+    this.transmilenioService.findById(transmilenio.id!).subscribe(response => {
+      response.rutas?.splice(this.getIndex(response, this.ruta), 1);
+      this.transmilenioService.update(response).subscribe(resp => {
+      });
     });
+  }
+
+  public getIndex(transmilenio: Transmilenio, ruta: Ruta): number {
+    let id: number = -1;
+    let contador: number = 0;
+    for (let rut of transmilenio.rutas!) {
+      if (rut.id === ruta.id) {
+        id = contador;
+      }
+      contador++;
+    }
+    return id;
   }
 }

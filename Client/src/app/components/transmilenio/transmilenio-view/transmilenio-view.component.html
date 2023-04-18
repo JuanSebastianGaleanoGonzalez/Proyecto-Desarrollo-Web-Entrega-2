@@ -1,4 +1,5 @@
 <html>
+
 <body>
     <section class="page-section about-heading">
         <div class="container">
@@ -11,16 +12,35 @@
                                 <span class="section-heading-upper">ver</span>
                                 <span class="section-heading-lower">Bus</span>
                             </h2>
-                            <div >
+                            <div>
                                 <div class="grupoAtributo">
                                     <p class="etiqueta">Placa:</p>
-                                    <p>{{transmilenio?.placa}}</p>
+                                    <p>{{transmilenio.placa}}</p>
                                 </div>
                                 <div class="grupoAtributo">
                                     <p class="etiqueta">Modelo:</p>
-                                    <p>{{transmilenio?.modelo}}</p>
+                                    <p>{{transmilenio.modelo}}</p>
                                 </div>
-                                  <table class="conductor-list table table-striped">
+                                <h5>Listado de Conductores:</h5>
+                                <table class="conductor-list table table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">Cedula</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Telefono</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let conductor of conductoresTransmilenio">
+                                            <td>{{conductor?.cedula}}</td>
+                                            <td>{{conductor?.nombre}}</td>
+                                            <td>{{conductor?.telefono}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <a class="btn btn-primary" [routerLink]="['/transmilenio/asign/conductor', transmilenio.id]">Administrar Conductores</a>
+                                <h5>Listado de Rutas:</h5>
+                                <table class="conductor-list table table-striped">
                                     <thead class="thead-dark">
                                         <tr>
                                             <th scope="col">Rutas</th>
@@ -29,12 +49,14 @@
                                     <tbody>
                                         <tr *ngFor="let ruta of rutasBus">
                                             <td>{{ruta?.codigo}}</td>
-                                            <td><a class="btn btn-outline-dark" [routerLink]="['/ruta/view', ruta.id]">Ver</a></td>
+                                            <td><a class="btn btn-outline-dark"
+                                                    [routerLink]="['/ruta/view', ruta.id]">Ver</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                  <a class="btn btn-secundary" [routerLink]="['/transmilenio/list']">Atrás</a>
+                                <a class="btn btn-primary" [routerLink]="['/transmilenio/asign/ruta', transmilenio.id]">Administrar Rutas</a>
                             </div>
+                            <a class="btn btn-secundary" [routerLink]="['/transmilenio/list']">Atrás</a>
                         </div>
                     </div>
                 </div>
@@ -42,4 +64,5 @@
         </div>
     </section>
 </body>
+
 </html>

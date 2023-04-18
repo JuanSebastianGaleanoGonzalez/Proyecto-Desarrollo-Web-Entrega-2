@@ -1,0 +1,79 @@
+<html>
+
+<body>
+    <section class="page-section about-heading">
+        <div class="container">
+            <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="assets/bus2.png" alt="..." />
+            <div class="about-heading-content">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-10 mx-auto">
+                        <div class="bg-faded rounded p-5">
+                            <h2 class="section-heading mb-4">
+                                <span class="section-heading-upper">ver</span>
+                                <span class="section-heading-lower">Bus</span>
+                            </h2>
+                            <div>
+                                <div class="grupoAtributo">
+                                    <p class="etiqueta">Placa:</p>
+                                    <p>{{transmilenio.placa}}</p>
+                                </div>
+                                <div class="grupoAtributo">
+                                    <p class="etiqueta">Modelo:</p>
+                                    <p>{{transmilenio.modelo}}</p>
+                                </div>
+                                <h5>Asignacion de Conductores:</h5>
+                                <div class="containerTablas">
+                                    <div class="divTabla">
+                                        <p>Asignados:</p>
+                                        <table class="conductor-list table table-striped">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col" class="section-heading mb-4">Cedula</th>
+                                                    <th scope="col" class="section-heading mb-4">Nombre</th>
+                                                    <th scope="col" class="section-heading mb-4">Telefono</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let conductor of conductoresAsignados">
+                                                    <td>{{conductor.cedula}}</td>
+                                                    <td>{{conductor.nombre}}</td>
+                                                    <td>{{conductor.telefono}}</td>
+                                                    <a class="btn botonEliminar"
+                                                        (click)="eliminarConductorTransmilenio(conductor)">Eliminar</a>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="divTabla">
+                                        <p> No asignados:</p>
+                                        <table class="conductor-list table table-striped">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col" class="section-heading mb-4">Cedula</th>
+                                                    <th scope="col" class="section-heading mb-4">Nombre</th>
+                                                    <th scope="col" class="section-heading mb-4">Telefono</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let conductor of conductoresNoAsignados">
+                                                    <td>{{conductor.cedula}}</td>
+                                                    <td>{{conductor.nombre}}</td>
+                                                    <td>{{conductor.telefono}}</td>
+                                                    <a class="btn botonAgregar"
+                                                        (click)="agregarConductorTransmilenio(conductor)">Agregar</a>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="btn btn-secundary" [routerLink]="['/transmilenio/view', transmilenio.id]">Atrás</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

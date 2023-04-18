@@ -43,7 +43,7 @@ public class DatabaseInit implements ApplicationRunner {
         conductorRepository.save(new Conductor("Anderson Alvarado", 234567, 901234, "Cra 50 #100-12"));
         conductorRepository.save(new Conductor("Daniel Florido", 345678, 123456, "Cra 7 #200-80"));
         conductorRepository.save(new Conductor("Jaime Pavlich", 456789, 234567, "Cra 164 #15-62"));
-        conductorRepository.save(new Conductor("Daniel Florido", 567890, 345678, "Cra 150 #50-44"));
+        conductorRepository.save(new Conductor("Zuluaga Pecueca", 567890, 345678, "Cra 150 #50-44"));
         conductorRepository.save(new Conductor("Pepe Veraz", 678901, 456789, "Cra 20 #56-44"));
         conductorRepository.save(new Conductor("Speedy Gonzalez", 789012, 567890, "Calle 90 #22-44"));
 
