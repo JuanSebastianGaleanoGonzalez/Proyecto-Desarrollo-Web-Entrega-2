@@ -17,8 +17,10 @@ import edu.javeriana.ProyectoWeb.model.repository.EstacionRepository;
 import edu.javeriana.ProyectoWeb.model.repository.HorarioRepository;
 import edu.javeriana.ProyectoWeb.model.repository.RutaRepository;
 import edu.javeriana.ProyectoWeb.model.repository.TransmilenioRepository;
+import org.springframework.context.annotation.Profile;
 
 @Component
+@Profile({"default"})
 public class DatabaseInit implements ApplicationRunner {
 
     @Autowired
