@@ -1,6 +1,8 @@
 package edu.javeriana.proyectoWeb;
 
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -60,27 +62,7 @@ public class ConductorSystemTest {
         this.baseUrl = "http://localhost:4200";
     }
 
-    private void saldoDebeSer(String saldo) {
-        String textoSaldoEsperado = String.format("Saldo: %s", saldo);
-        WebElement liCuentaSaldo = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("liCuentaSaldo")));
-        try {
-            // comprueba que lo que está en la casilla liCuentaSaldo sea igual al textoSaldoEsperado, si no hay un timeout y salta excepcion
-            wait.until(ExpectedConditions.textToBePresentInElement(liCuentaSaldo, textoSaldoEsperado));
-        } catch (TimeoutException e) {
-            fail("Could not find " + textoSaldoEsperado + ", instead found " + liCuentaSaldo.getText(), e);
-        }
-    }
-
-    @AfterEach //despues de ejecutar las pruebas
-    void end() {
-        // driver.close();
-        browser.quit(); //cerrar el browser
-    }
-
-    //comprobar que el conductor que se muestra es el indicado
-    @Test 
-    void verConductor() {
-        long id = 1;
+    private void conductorDebeSer(long id) {
         Conductor conductor = conductorRepository.findById(id).orElseThrow();
         browser.get(baseUrl + "/conductor/view/" + id);
         
@@ -97,33 +79,97 @@ public class ConductorSystemTest {
         } catch (TimeoutException e) {
             fail("Valores no encontrados ", e);
         }
+    
     }
 
+    @AfterEach //despues de ejecutar las pruebas
+    void end() {
+        // driver.close();
+        browser.quit(); //cerrar el browser
+    }
+
+    //comprobar que el conductor que se muestra es el indicado
+    @Test 
+    void verConductor() {
+        long id = 1;
+        conductorDebeSer(id);
+    }  
+
+    //editar conductor, nombre y cedula.
     @Test
-    void retirar() {
-        browser.get(baseUrl + "/cuenta/1");
-        //esperar a que se ejecute la condicion del expectedConditions, que exista el id txtCantidad en la plantilla
-        WebElement txtCantidad = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("txtCantidad")));
+    void editarConductor() {
+        
+        long id = 1;
+        browser.get(baseUrl + "/conductor/update/" + id);
+        
+        //esperar a que se ejecute la condicion del expectedConditions, que exista el id nombre en la plantilla
+        WebElement nombreObtenido = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("nombre")));
+        //esperar a que se ejecute la condicion del expectedConditions, que exista el id cedula en la plantilla
+        WebElement cedulaObtenida = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cedula")));
 
         //si se cumple se ejecuta:
-        //en la casilla de la plantilla txtCantidad:
-        txtCantidad.sendKeys(Keys.BACK_SPACE); // borra lo que ya esté
-        txtCantidad.sendKeys("500"); // enviar cualquier string
+        //en las casillas de la plantilla txtCantidad:
 
-       // WebElement btnRetirar = browser.findElementById("btnRetirar"); // simular el botón retirar
-       // btnRetirar.click(); //simular el click al boton
+        // borra lo que ya esté
+        nombreObtenido.sendKeys(Keys.BACK_SPACE); 
+        cedulaObtenida.sendKeys(Keys.BACK_SPACE); 
 
-        saldoDebeSer("5,500.00");
+        // enviar nuevos valores
+        nombreObtenido.sendKeys("Darth Vader");
+        cedulaObtenida.sendKeys("1003");  
+
+        // simular el botón Actualizar
+        WebElement btnActualizar = browser.findElementById("btnActualizar");
+
+        //simular el click al boton
+        btnActualizar.click(); 
+        
+        conductorDebeSer(id);
     }
 
+    //crear conductor, nombre y cedula.
     @Test
-    void abonar() {
-        browser.get(baseUrl + "/cuenta/1");
-        WebElement txtCantidad = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("txtCantidad")));
-        txtCantidad.sendKeys(Keys.CONTROL + "a");
-        txtCantidad.sendKeys("500");
-      //  WebElement btnAbonar = browser.findElementById("btnAbonar");
-      //  btnAbonar.click();
-        saldoDebeSer("6,500.00");
+    void crearConductor() {
+        browser.get(baseUrl + "/conductor/create");
+        
+        //esperar a que se ejecute la condicion del expectedConditions, que existan los id's en la plantilla
+        WebElement nombreCrear = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("nombre")));
+        WebElement cedulaCrear = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cedula")));
+        WebElement telefonoCrear = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("telefono")));
+        WebElement direccionCrear = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("direccion")));
+        
+        //si se cumple se ejecuta:
+        //en las casillas de la plantilla txtCantidad:
+
+        // enviar nuevos valores
+        nombreCrear.sendKeys("Grogu");
+        cedulaCrear.sendKeys("69");
+        telefonoCrear.sendKeys("666"); 
+        direccionCrear.sendKeys("Calle 19"); 
+
+        // simular el botón Crear
+        WebElement btnCrear = browser.findElementById("btnCrear");
+
+        //simular el click al boton
+        btnCrear.click();
+
+        conductorDebeSer(4);
+    }
+
+    //Ver la lista de Conductores
+    @Test
+    void listConductores() {
+        browser.get(baseUrl + "/conductor/list");
+
+        //esperar hasta que haya 3 elementos
+        wait.until(ExpectedConditions.numberOfElementsToBe(By.className("classCedula"), 3));
+        List<Conductor> conductoresEsperados = (List<Conductor>) conductorRepository.findAll();
+        List<WebElement> conductoresCedula = browser.findElementsByClassName("classCedula");
+        assertEquals(conductoresEsperados.size(), conductoresCedula.size());
+        
+        for (int i = 0; i < conductoresEsperados.size(); i++) {
+            assertEquals(String.valueOf(conductoresEsperados.get(i).getCedula()),
+            conductoresCedula.get(i).getText());
+        }
     }
 }

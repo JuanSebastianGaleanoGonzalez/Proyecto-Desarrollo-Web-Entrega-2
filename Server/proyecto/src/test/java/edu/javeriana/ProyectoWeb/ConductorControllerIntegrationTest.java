@@ -57,7 +57,7 @@ public class ConductorControllerIntegrationTest {
     @Test
     void crearConductor() throws Exception {
         // Crear un objeto Conductor para la nueva entidad
-        Conductor nuevoConductor = new Conductor("Kenan Jarrus", 124223, 85454,"Cra 1 Lothal")
+        Conductor nuevoConductor = new Conductor("Kenan Jarrus", 124223, 85454,"Cra 1 Lothal");
 
         // Hacer la solicitud POST al endpoint correspondiente
         String url = "http://localhost:" + port + "/conductor/create";

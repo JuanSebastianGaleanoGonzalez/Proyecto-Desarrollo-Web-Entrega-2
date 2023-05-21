@@ -20,8 +20,8 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let conductor of conductores">
-                                        <td class="mb-3">{{conductor.cedula}}</td>
-                                        <td class="mb-3">{{conductor.nombre}}</td>
+                                        <td class="classCedula" class="mb-3">{{conductor.cedula}}</td>
+                                        <td class="classNombre" class="mb-3">{{conductor.nombre}}</td>
                                         <td class="intro-button mx-auto">
                                             <a class="btn btn-outline-dark"
                                                 [routerLink]="['/conductor/view', conductor.id]">Ver</a>
@@ -31,7 +31,7 @@
                                                 [routerLink]="['/conductor/update', conductor.id]">Editar</a>
                                         </td>
                                         <td>
-                                            <a class="btn btn-outline-danger"
+                                            <a class="btn btn-outline-danger" id="btnEliminar"
                                                 (click)="eliminarConductor(conductor.id!)">Eliminar</a>
                                         </td>
                                     </tr>
