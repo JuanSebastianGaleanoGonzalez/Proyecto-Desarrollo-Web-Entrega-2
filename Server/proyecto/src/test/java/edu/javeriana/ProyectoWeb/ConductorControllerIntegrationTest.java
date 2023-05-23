@@ -1,4 +1,4 @@
-package edu.javeriana.proyectoWeb;
+package edu.javeriana.ProyectoWeb;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue; 
 import static org.junit.jupiter.api.Assertions.assertNotNull; 
@@ -40,19 +40,21 @@ public class ConductorControllerIntegrationTest {
     @Autowired
     private TestRestTemplate rest;
 
+    // mvn test -Dtest=ConductorControllerIntegrationTest#verConductor
     //Prueba Get
     @Test
     void verConductor() throws Exception {
         //getforObject parametros: url, tipo de dato que se espera recibir como resultado
         Conductor conductorExistente = rest.getForObject("http://localhost:" + port + "/conductor/read/1", Conductor.class);
-        //System.out.println(conductor1.toString());
+        //System.out.println(conductorExistente.toString());
 
         // comparar lo que esperamos recibir con lo que recibimos.
         Conductor conductorEsperado = new Conductor("Sebastian Galeano", 123456, 890123, "Puente AV Boyaca");
         assertTrue(conductorEsperado.equals(conductorExistente));
-        //assertEquals(conductor1, conductor2);
+        //assertEquals(conductorExistente, conductorEsperado);
     }
 
+    // mvn test -Dtest=ConductorControllerIntegrationTest#crearConductor
     //Prueba Post
     @Test
     void crearConductor() throws Exception {
@@ -64,7 +66,7 @@ public class ConductorControllerIntegrationTest {
         ResponseEntity<Conductor> response = rest.postForEntity(url, nuevoConductor, Conductor.class);
 
         // Verificar el código de respuesta y obtener el cuerpo de la respuesta
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
         Conductor conductorCreado = response.getBody();
 
         // Verificar que el conductor haya sido creado correctamente
@@ -73,6 +75,7 @@ public class ConductorControllerIntegrationTest {
         assertTrue(nuevoConductor.equals(conductorCreado));
     }
 
+    // mvn test -Dtest=ConductorControllerIntegrationTest#actualizarConductor
     //Prueba Put
     @Test
     void actualizarConductor() throws Exception{
@@ -98,6 +101,7 @@ public class ConductorControllerIntegrationTest {
         assertTrue(conductorActualizado.equals(conductorActual));
     }
     
+    // mvn test -Dtest=ConductorControllerIntegrationTest#eliminarConductor
     //Prueba Delete
     @Test
     void eliminarConductor() throws Exception{

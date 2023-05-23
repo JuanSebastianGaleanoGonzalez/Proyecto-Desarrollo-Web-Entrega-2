@@ -1,4 +1,4 @@
-package edu.javeriana.proyectoWeb;
+package edu.javeriana.ProyectoWeb;
 
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,7 +12,6 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +22,8 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ActiveProfiles;
 import edu.javeriana.ProyectoWeb.model.repository.ConductorRepository;
 import edu.javeriana.ProyectoWeb.model.entity.Conductor;
+import java.time.Duration;
+import org.springframework.core.io.ClassPathResource;
 
 @ActiveProfiles("systemtest")
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
@@ -39,25 +40,23 @@ public class ConductorSystemTest {
 
     @BeforeEach
     void init() {
+        
+        ChromeOptions options = new ChromeOptions();
+
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--start-maximized");
+        options.addArguments("--headless");
+
+
+        System.setProperty("webdriver.chrome.driver", new ClassPathResource("src/main/resources/chromedriver.exe").getPath());
+        this.browser = new ChromeDriver(options);// instanciar browser con las opciones
+        this.wait = new WebDriverWait(browser, Duration.ofSeconds(5));
+        
         conductorRepository.save(new Conductor("Sebastian Galeano", 123456, 890123, "Puente AV Boyaca"));
         conductorRepository.save(new Conductor("Anderson Alvarado", 234567, 901234, "Cra 50 #100-12"));
-        conductorRepository.save(new Conductor("Jaime Pavlich", 456789, 234567, "Cra 164 #15-62"));
-
-        ChromeOptions options = new ChromeOptions(); // abre una instancia de chrome
-        options.addArguments("--no-sandbox"); // Bypass OS security model, MUST BE THE VERY FIRST OPTION
-        // options.addArguments("--headless"); // To hide Chrome window,no abre la ventana de chrome
-        options.addArguments("--disable-gpu"); // applicable to windows os only
-        options.addArguments("--disable-extensions"); // disabling extensions
-        // options.setExperimentalOption("useAutomationExtension", false);
-        // options.addArguments("start-maximized"); // open Browser in maximized mode
-        // options.addArguments("disable-infobars"); // disabling infobars
-        // options.addArguments("--disable-dev-shm-usage"); // overcome limited resource
-        // problems
-       // options.merge(DesiredCapabilities.chrome());// opciones por defecto del browser
-
-        this.browser = new ChromeDriver(options);// instanciar browser con las opciones
-
-        //this.wait = new WebDriverWait(browser, 5); // browser y le pasan los segundos
+        conductorRepository.save(new Conductor("Jaime Pavlich", 456789, 234567, "Cra 164 #15-62"));        
 
         this.baseUrl = "http://localhost:4200";
     }
@@ -84,10 +83,11 @@ public class ConductorSystemTest {
 
     @AfterEach //despues de ejecutar las pruebas
     void end() {
-        // driver.close();
+        // browser.close();
         browser.quit(); //cerrar el browser
     }
 
+    //mvn test -Dtest=ConductorSystemTest#verConductor
     //comprobar que el conductor que se muestra es el indicado
     @Test 
     void verConductor() {
@@ -95,6 +95,7 @@ public class ConductorSystemTest {
         conductorDebeSer(id);
     }  
 
+    //mvn test -Dtest=ConductorSystemTest#editarConductor
     //editar conductor, nombre y cedula.
     @Test
     void editarConductor() {
@@ -119,7 +120,8 @@ public class ConductorSystemTest {
         cedulaObtenida.sendKeys("1003");  
 
         // simular el botón Actualizar
-        WebElement btnActualizar = browser.findElementById("btnActualizar");
+        WebElement btnActualizar = browser.findElement(By.id("btnActualizar"));
+        //WebElement btnActualizar = browser.findElementById("btnActualizar");
 
         //simular el click al boton
         btnActualizar.click(); 
@@ -127,6 +129,7 @@ public class ConductorSystemTest {
         conductorDebeSer(id);
     }
 
+    //mvn test -Dtest=ConductorSystemTest#crearConductor
     //crear conductor, nombre y cedula.
     @Test
     void crearConductor() {
@@ -148,7 +151,9 @@ public class ConductorSystemTest {
         direccionCrear.sendKeys("Calle 19"); 
 
         // simular el botón Crear
-        WebElement btnCrear = browser.findElementById("btnCrear");
+        //WebElement btnCrear = browser.findElementById("btnCrear");
+        WebElement btnCrear = browser.findElement(By.id("btnCrear"));
+
 
         //simular el click al boton
         btnCrear.click();
@@ -156,6 +161,7 @@ public class ConductorSystemTest {
         conductorDebeSer(4);
     }
 
+    //mvn test -Dtest=ConductorSystemTest#listConductores
     //Ver la lista de Conductores
     @Test
     void listConductores() {
@@ -164,7 +170,8 @@ public class ConductorSystemTest {
         //esperar hasta que haya 3 elementos
         wait.until(ExpectedConditions.numberOfElementsToBe(By.className("classCedula"), 3));
         List<Conductor> conductoresEsperados = (List<Conductor>) conductorRepository.findAll();
-        List<WebElement> conductoresCedula = browser.findElementsByClassName("classCedula");
+        //List<WebElement> conductoresCedula = browser.findElementsByClassName("classCedula");
+        List<WebElement> conductoresCedula = browser.findElements(By.className("classCedula"));
         assertEquals(conductoresEsperados.size(), conductoresCedula.size());
         
         for (int i = 0; i < conductoresEsperados.size(); i++) {
