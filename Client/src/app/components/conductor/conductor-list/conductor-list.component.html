@@ -11,7 +11,7 @@
                                 <span class="section-heading-upper">listado</span>
                                 <span class="section-heading-lower">Conductores</span>
                             </h2>
-                            <table class="conductor-list table table-striped">
+                            <table class="tablaConductores" class="conductor-list table table-striped">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col" class="section-heading mb-4">Cédula</th>
@@ -19,9 +19,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let conductor of conductores">
-                                        <td class="classCedula" class="mb-3">{{conductor.cedula}}</td>
-                                        <td class="classNombre" class="mb-3">{{conductor.nombre}}</td>
+                                    <tr class="conductores" *ngFor="let conductor of conductores">
+                                        <td class="classCedula" class="mb-3" id="cedula">{{conductor.cedula}}</td>
+                                        <td class="classNombre" class="mb-3" id="nombre">{{conductor.nombre}}</td>
                                         <td class="intro-button mx-auto">
                                             <a class="btn btn-outline-dark"
                                                 [routerLink]="['/conductor/view', conductor.id]">Ver</a>
